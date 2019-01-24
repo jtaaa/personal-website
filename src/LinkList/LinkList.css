@@ -1,0 +1,16 @@
+.LinkList {
+    text-align: center;
+    margin: 1em 0;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.LinkList-link {
+
+}
+
+.LinkList-link-img {
+    width: 32px;
+    border-radius: 50%;
+    margin: 0 0.5em;
+}

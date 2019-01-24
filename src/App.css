@@ -1,3 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Source+Serif+Pro');
+
 .App {
-  text-align: center;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.App-backdrop {
+  width: 50%;
+  height: 100vh;
+  object-position: top;
+  object-fit: cover;
+}
+
+.App-content {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: end;
+  width: 50%;
+  height: 100vh;
+  max-width: 500px;
+  padding: 3em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.App-title {
+  font-size: 4em;
+}
+
+.App-subtitle {
+  color: #444444;
+  letter-spacing: 2px;
+  padding: 1em 0;
+}
+
+.App-description {
+  color: #555555;
+  font-family: 'Source Serif Pro', serif;
+  padding: 1em 0;
 }
