@@ -9,13 +9,15 @@ const LinkList = ({ links }) => {
       { links.map(({ href, src, alt, tooltip }) => (
         <div key={href}>
           <a
-            data-tip
-            data-for={href}
             className="LinkList-link"
             href={href}
             target="_blank"
             rel="noopener noreferrer">
-            <img className="LinkList-link-img" src={src} alt={alt} />
+            <img 
+              data-tip
+              data-for={href}
+              className="LinkList-link-img"
+              src={src} alt={alt} />
           </a>
           <ReactTooltip id={href} type='light' effect='solid' place="bottom">
             { tooltip }

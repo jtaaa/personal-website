@@ -6,11 +6,15 @@
 }
 
 .LinkList-link {
-
+    margin: 0 0.5em;
 }
 
 .LinkList-link-img {
     width: 32px;
     border-radius: 50%;
-    margin: 0 0.5em;
+    filter: opacity(45%) grayscale(100%);
+    transition: filter ease-in-out 200ms;
+}
+.LinkList-link-img:hover {
+    filter: none;
 }

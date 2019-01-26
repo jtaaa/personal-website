@@ -20,22 +20,22 @@ class App extends Component {
           </div>
           <LinkList links={[{
             href: 'http://uwblueprint.org',
-            src: '/assets/bp_bw.jpg',
+            src: '/assets/bp_small_color.png',
             alt: 'UW Blueprint',
-            tooltip: <span>UW Blueprint</span>,
+            tooltip: <span>Blueprint</span>,
           }, {
             href: 'http://uwacs.club',
-            src: '/assets/acs_bw.png',
+            src: '/assets/acs_small_bw.png',
             alt: 'University of Waterloo Association of Caribbean Students',
             tooltip: <span>University of Waterloo<br/>Association of Caribbean Students</span>,
           }, {
             href: 'http://www.massygroup.com/home.aspx',
-            src: '/assets/massy_bw.jpg',
+            src: '/assets/massy_small_color.png',
             alt: 'Massy Group',
             tooltip: <span>Massy Technologies InfoCom</span>,
           }, {
             href: 'https://www.teleios-systems.com/',
-            src: '/assets/teleios_bw.png',
+            src: '/assets/teleios_small_color_whitebg.png',
             alt: 'Teleios Systems Limited',
             tooltip: <span>Teleios Systems Limited</span>,
           }]} />
