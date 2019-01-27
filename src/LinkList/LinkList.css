@@ -3,6 +3,19 @@
     margin: 1em 0;
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
+}
+
+.LinkList-link-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.LinkList-divider {
+    margin: 0 1em;
+    height: 28px;
+    border-right: 1px solid rgb(236, 236, 236);
 }
 
 .LinkList-link {
@@ -11,10 +24,13 @@
 
 .LinkList-link-img {
     width: 32px;
-    border-radius: 50%;
     filter: opacity(45%) grayscale(100%);
     transition: filter ease-in-out 200ms;
 }
 .LinkList-link-img:hover {
     filter: none;
+}
+
+.LinkList-round-img {
+    border-radius: 50%;
 }
