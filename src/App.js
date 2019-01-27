@@ -41,20 +41,20 @@ class App extends Component {
               alt: 'Teleios Systems Limited',
               tooltip: <span>Teleios Systems Limited</span>,
             }, {
-              href: 'https://github.com/jtaaa/',
-              src: '/assets/octocat_small_color.png',
-              alt: 'GitHub profile',
-              tooltip: <span>View GitHub Profile</span>,
+              href: 'mailto:joshuatallum@gmail.com',
+              src: '/assets/paperplane_small_color.png',
+              alt: 'Email address',
+              tooltip: <span>Contact Me</span>,
             }, {
               href: 'https://raw.githack.com/jtaaa/Resume/master/Resume-blue.pdf',
               src: '/assets/resume_small_color_short.png',
               alt: 'Resume',
               tooltip: <span>View Résumé</span>,
             }, {
-              href: 'mailto:joshuatallum@gmail.com',
-              src: '/assets/paperplane_small_color.png',
-              alt: 'Email address',
-              tooltip: <span>Contact Me</span>,
+              href: 'https://github.com/jtaaa/',
+              src: '/assets/octocat_small_color.png',
+              alt: 'GitHub profile',
+              tooltip: <span>View GitHub Profile</span>,
             }]}
             dividers={[ 'https://www.teleios-systems.com/' ]} />
         </div>
