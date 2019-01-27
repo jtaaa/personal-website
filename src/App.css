@@ -16,12 +16,17 @@
   height: 40vh;
   object-position: center 25%;
   object-fit: cover;
+  transition: opacity linear 300ms;
 }
 @media only screen and (min-width: 1024px) {
   .App-backdrop {
     width: 50%;
     height: 100vh;
     object-position: top;
+  }
+
+  .faded-out {
+    opacity: 0;
   }
 }
 
