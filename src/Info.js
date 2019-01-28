@@ -39,6 +39,19 @@ const info = {
             }]
         },
     },
+    '/info/acs': {
+        name: 'acs',
+        generalInfo: {
+            description: 'The University of Waterloo ACS is a student group that fosters a strong Caribbean community and promotes Caribbean culture.',
+            infoPoints: [{
+                label: 'Role:',
+                value: 'Web Administrator',
+            }, {
+                label: 'Joined:',
+                value: 'Oct, 2016',
+            }]
+        },
+    },
 };
 
 const getInfo = (location) => {
