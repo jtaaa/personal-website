@@ -4,6 +4,7 @@ import './App.css';
 
 import HomePage from './pages/HomePage/HomePage';
 import Header from './components/Header/Header';
+import InfoPage from './pages/InfoPage/InfoPage';
 
 class App extends Component {
   render() {
@@ -11,8 +12,13 @@ class App extends Component {
       <Router>
         <div className="App">
           <Switch>
-            <Route path="/" exact component={HomePage}></Route>
-            <Route path="/" component={Header}></Route>
+            <Route path="/info/" render={props => (
+              <div>
+                <Header location={props.location}></Header>
+                <InfoPage location={props.location}></InfoPage>
+              </div>
+            )}></Route>
+            <Route path="/" component={HomePage}></Route>
           </Switch>
         </div>
       </Router>
