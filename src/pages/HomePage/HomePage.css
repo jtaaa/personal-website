@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Source+Serif+Pro');
-
 .HomePage {
   display: flex;
   flex-direction: column;
@@ -31,7 +29,6 @@
 }
 
 .HomePage-content {
-  font-family: 'Josefin Sans', sans-serif;
   height: 60vh;
   max-width: 500px;
   padding: 4em 2em;
