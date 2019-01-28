@@ -1,0 +1,12 @@
+.Toolbar {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.Toolbar-title {
+    color: #666666;
+    text-align: center;
+    margin-right: 32px;
+    flex: 1;
+}
