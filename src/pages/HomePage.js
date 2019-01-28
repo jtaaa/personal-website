@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './HomePage.css';
 
-import LinkList from './LinkList/LinkList';
-import linkGroups from './Links';
+import LinkList from './../components/LinkList/LinkList';
+import linkGroups from './../Links';
 
 class HomePage extends Component {
   constructor(props) {

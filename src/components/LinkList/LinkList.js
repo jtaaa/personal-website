@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './LinkList.css';
-
 import ReactTooltip from 'react-tooltip';
+import './LinkList.css';
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
@@ -77,4 +76,4 @@ class LinkList extends Component {
   };
 };
 
-export default LinkList
+export default LinkList;
