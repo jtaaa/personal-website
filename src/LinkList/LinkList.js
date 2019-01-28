@@ -3,7 +3,7 @@ import './LinkList.css';
 
 import ReactTooltip from 'react-tooltip';
 
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 class LinkList extends Component {
   constructor(props) {
@@ -15,7 +15,9 @@ class LinkList extends Component {
   componentDidMount() {
     this.props.linkGroups.forEach(linkGroup => {
       linkGroup.links.forEach(link => {
-        setTimeout(() => this.setState(state => ({ greyed: { [link.name]: true, ...state.greyed }})), link.delay ? link.delay : '500');
+        setTimeout(() => this.setState(state => ({
+          greyed: { [link.name]: true, ...state.greyed }
+        })), link.delay ? link.delay : '500');
       });
     });
   }
@@ -66,6 +68,7 @@ class LinkList extends Component {
         children.push(<div key={`LinkList-divider-${i}`} className="LinkList-divider"></div>);
       }
     }
+
     return (
       <div className="LinkList">
         { children }
