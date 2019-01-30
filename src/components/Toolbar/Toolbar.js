@@ -7,7 +7,7 @@ class Toolbar extends Component {
   render() {
     return (
       <div className="Toolbar">
-        <MenuButton></MenuButton>
+        <MenuButton {...this.props}></MenuButton>
         <div className="Toolbar-title">Joshua Allum</div>
       </div>
     )
