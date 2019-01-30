@@ -1,7 +1,16 @@
 .Header {
+    height: 195px;
     margin: 0.35em;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 10px;
+    transition: background-color cubic-bezier(0.86, 0, 0.07, 1) 300ms;
+}
+
+.Header-menu-open {
+    background-color: #FBF4F4;
 }
 
 .Header-img {
