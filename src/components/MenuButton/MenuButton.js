@@ -17,8 +17,8 @@ class MenuButton extends Component {
       this.props.onMenuOpen();
     }
     this.setState(state => ({
-      open: !state.open,
       ...state,
+      open: !state.open,
     }));
   }
   
