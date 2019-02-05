@@ -61,6 +61,32 @@ const info = {
             }]
         },
     },
+    '/info/teleios': {
+        name: 'teleios',
+        generalInfo: {
+            description: 'Teleios Systems Limited is a leader in cloud, mobile and automation services in the Caribbean, across the government, energy, retail, finance and telecommunications industries.',
+            infoPoints: [{
+                label: 'Role:',
+                value: 'Software Developer',
+            }, {
+                label: 'Joined:',
+                value: 'June, 2017',
+            }]
+        },
+    },
+    '/info/massy': {
+        name: 'massy',
+        generalInfo: {
+            description: 'Massy Technologies InfoCom is part of the largest conglomerate in the Caribbean, Massy Holdings Limited, and provides software and IT solutions to customers across the Caribbean.',
+            infoPoints: [{
+                label: 'Role:',
+                value: 'Software & Data Science Developer',
+            }, {
+                label: 'Joined:',
+                value: 'May, 2018',
+            }]
+        },
+    },
 };
 
 const getInfo = (location) => {
