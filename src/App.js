@@ -14,7 +14,7 @@ class App extends Component {
           <Switch>
             <Route path="/info/" render={props => (
               <div>
-                <Header location={props.location}></Header>
+                <Header></Header>
                 <InfoPage location={props.location}></InfoPage>
               </div>
             )}></Route>
