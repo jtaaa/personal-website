@@ -23,7 +23,7 @@ class Header extends Component {
   }
   
   render() {
-    const { logo, alt, title, pos } = mapLocationToHeaderInfo(this.props.location.pathname);
+    const { logo, alt, title, pos, href } = mapLocationToHeaderInfo(this.props.location.pathname);
     return (
       <div className={`Header ${this.state.menuOpen ? 'Header-menu-open' : ''}`}>
         <Toolbar onMenuToggle={this.onMenuToggle.bind(this)} menuOpen={this.state.menuOpen}></Toolbar>
@@ -33,7 +33,9 @@ class Header extends Component {
           transitionEnterTimeout={200}
           transitionLeaveTimeout={200}>
           { logo && !this.state.menuOpen &&
-          <img className="Header-img" src={logo} alt={alt}/> }
+          <a className="Header-img-a" href={href} target="_blank" rel="noopener noreferrer">
+            <img className="Header-img" src={logo} alt={alt}/>
+          </a> }
         </ReactCSSTransitionGroup>
         <div className="Header-menu-list">
           { headerInfo.map(info => (
