@@ -1,6 +1,20 @@
+.MenuButton-wrapper {
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .MenuButton {
     width: 24px;
     height: 24px;
     background-image: url('/assets/menu_icon.png');
     background-size: contain;
+}
+
+.MenuButton-open {
+    width: 18px;
+    height: 18px;
+    background-image: url('/assets/menu_icon_open.png');
 }
