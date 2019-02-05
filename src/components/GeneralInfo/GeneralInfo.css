@@ -22,3 +22,7 @@
 .GeneralInfo-info-label {
     color: #4e4e4e;
 }
+
+.GeneralInfo-info-value {
+    text-align: end;
+}
