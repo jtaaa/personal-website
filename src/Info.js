@@ -1,5 +1,6 @@
 const headerInfo = [{
     logo: '/assets/bp_small_color.png',
+    href: 'https://uwblueprint.org/',
     title: 'Blueprint',
     name: 'blueprint',
     alt: 'Blueprint logo',
@@ -7,18 +8,21 @@ const headerInfo = [{
 }, {
     logo: '/assets/acs_small_bw.png',
     title: 'Association of Caribbean Students',
+    href: 'http://uwacs.club',
     name: 'acs',
     alt: 'ACS logo',
     pos: 1,
 }, {
     logo: '/assets/teleios_small_color_whitebg.png',
     title: 'Teleios Systems Limited',
+    href: 'https://www.teleios-systems.com/',
     name: 'teleios',
     alt: 'Teleios logo',
     pos: 2,
 }, {
     logo: '/assets/massy_small_color.png',
     title: 'Massy Technologies InfoCom',
+    href: 'http://www.massygroup.com/home.aspx',
     name: 'massy',
     alt: 'Massy Group logo',
     pos: 3,
