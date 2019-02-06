@@ -1,4 +1,25 @@
 .InfoPage {
     font-size: 0.875em;
-    margin: 0 2em;
+}
+
+.InfoPage-divider {
+    height: 0;
+    width: 0;
+    border-left: 50vw solid rgba(248, 248, 248, 0.5);
+    border-right: 50vw solid rgba(248, 248, 248, 0.5);
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid rgba(248, 248, 248, 1);
+}
+
+.InfoPage-section {
+    padding: 0 2em;
+}
+
+.InfoPage-projects {
+    padding: 1em 2em;
+    background-color: #F8F8F8; 
+}
+
+.InfoPage-header {
+    font-size: 1.25em;
 }

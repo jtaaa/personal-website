@@ -9,7 +9,13 @@ class InfoPage extends Component {
     const info = getInfo(this.props.location.pathname);
     return (
       <div className="InfoPage">
-        { info && <GeneralInfo {...info.generalInfo}></GeneralInfo> }
+        <div className="InfoPage-section">
+          { info && <GeneralInfo {...info.generalInfo}></GeneralInfo> }
+        </div>
+        <div className="InfoPage-divider"></div>
+        <div className="InfoPage-projects">
+          <div className="InfoPage-header">Projects</div>
+        </div>
       </div>
     )
   }
