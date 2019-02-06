@@ -3,6 +3,7 @@ import './InfoPage.css';
 
 import GeneralInfo from '../../components/GeneralInfo/GeneralInfo';
 import { getInfo } from '../../Info';
+import ProjectInfo from '../../components/ProjectInfo/ProjectInfo';
 
 class InfoPage extends Component {
   render() {
@@ -15,6 +16,8 @@ class InfoPage extends Component {
         <div className="InfoPage-divider"></div>
         <div className="InfoPage-projects">
           <div className="InfoPage-header">Projects</div>
+          { info.projectsInfo.map(projectInfo => (
+          <ProjectInfo {...projectInfo}/> ))}
         </div>
       </div>
     )

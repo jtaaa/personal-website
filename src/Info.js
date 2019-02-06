@@ -49,8 +49,15 @@ const info = {
             }, {
                 label: 'Joined:',
                 value: 'Jan, 2018',
-            }]
+            }],
         },
+        projectsInfo: [{
+            img: '/assets/project_images/bestfriends/pixel_camera.png',
+            alt: '',
+            title: 'Best Friends Animal Society',
+            titleLink: 'https://bestfriends.org/',
+            description: 'Best Friends runs America’s largest no-kill animal sanctuary and aims to achieve nation-wide no-kill status by 2025.'
+        }],
     },
     '/info/acs': {
         name: 'acs',
@@ -62,8 +69,9 @@ const info = {
             }, {
                 label: 'Joined:',
                 value: 'Oct, 2016',
-            }]
+            }],
         },
+        projectsInfo: [],
     },
     '/info/teleios': {
         name: 'teleios',
@@ -75,8 +83,9 @@ const info = {
             }, {
                 label: 'Joined:',
                 value: 'June, 2017',
-            }]
+            }],
         },
+        projectsInfo: [],
     },
     '/info/massy': {
         name: 'massy',
@@ -88,8 +97,9 @@ const info = {
             }, {
                 label: 'Joined:',
                 value: 'May, 2018',
-            }]
+            }],
         },
+        projectsInfo: [],
     },
 };
 
