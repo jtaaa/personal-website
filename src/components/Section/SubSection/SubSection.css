@@ -1,3 +1,17 @@
 .SubSection {
-    
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.SubSection-breakdown {
+    color: #5C5C5C;
+    padding: 1em;
+    margin: 0.5em 0;
+    background-color: #EBF6FE;
+    border-radius: 8px;
+}
+
+.SubSection-breakdown-point:empty {
+    height: 1em;
 }
