@@ -1,4 +1,5 @@
 .SubSection {
+    margin: 0.5em 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -6,6 +7,11 @@
 
 .SubSection-title {
     color: #727272;
+    margin-bottom: 1em;
+}
+
+.SubSection-paragraph {
+    margin: 0.5em 0;
 }
 
 .SubSection-breakdown {
