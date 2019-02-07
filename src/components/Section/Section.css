@@ -1,0 +1,17 @@
+.Section {
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Section-title {
+    font-size: 1.05em;
+    margin: 0.5em 0;
+}
+
+.Section-underline {
+    width: 90px;
+    margin-bottom: 1.5em;
+    border-bottom: 1px solid black;
+}
