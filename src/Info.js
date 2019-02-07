@@ -102,6 +102,47 @@ const info = {
                         'Photos are taken in the mobile app and sent to a backend server to be processed. User’s can view what requirements each photo passed and failed before saving.',
                     ],
                 }],
+            }, {
+                name: 'bestfriends techused',
+                title: 'Tech Used',
+                subsections: [{
+                    name: 'bestfriends techused p1',
+                    title: 'Frontend',
+                    type: 'paragraph',
+                    contents: [
+                        'React Native and the Expo toolchain were used to develop the cross-platform mobile app.',
+                    ],
+                }, {
+                    name: 'bestfriends techused p2',
+                    title: 'Backend',
+                    type: 'paragraph',
+                    contents: [
+                        'Python was chosen as the backend language to facilitate the image manipulation and machine learning tasks.',
+                        'The backend consists of a Flask server that uses OpenCV and Scikit-Image to check the requirements.',
+                    ],
+                }],
+            }, {
+                name: 'bestfriends mycontribution',
+                title: 'My Contribution',
+                subsections: [{
+                    name: 'bestfriends mycontribution p1',
+                    type: 'paragraph',
+                    contents: [
+                        'I worked mostly on the backend.',
+                    ],
+                }, {
+                    name: 'bestfriends mycontribution p2',
+                    type: 'paragraph',
+                    contents: [
+                        'Using OpenCV, I was able to detect the bounding boxes of animals within a photo and determine whether or not they are centered.',
+                    ],
+                }, {
+                    name: 'bestfriends mycontribution p3',
+                    type: 'paragraph',
+                    contents: [
+                        'Using Skikit-Image I was able to produce statistics describing the brightness and contrast of a photo to determine if it had acceptably lighting.',
+                    ],
+                }],
             }],
         }],
     },
