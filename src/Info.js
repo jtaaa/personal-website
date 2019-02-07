@@ -59,19 +59,47 @@ const info = {
             titleLink: 'https://bestfriends.org/',
             description: 'Best Friends runs America’s largest no-kill animal sanctuary and aims to achieve nation-wide no-kill status by 2025.',
             sections: [{
-                name: 'problem',
+                name: 'bestfriends problem',
                 title: 'Problem',
                 subsections: [{
-                    name: 'p1',
+                    name: 'bestfriends problem p1',
                     type: 'paragraph',
                     contents: [
                         'Based on data collected by Best Friends, it was found that the image quality of animal profile pics was the no. 1 factor that determined whether an animal would be adopted or not.',
                     ],
                 }, {
-                    name: 'p2',
+                    name: 'bestfriends problem p2',
                     type: 'paragraph',
                     contents: [
-                        'Since animals come to the sanctuary from a number of different shelters nation-wide, image quality was not enforced and varied greatly.'
+                        'Since animals come to the sanctuary from a number of different shelters nation-wide, image quality was not enforced and varied greatly.',
+                    ],
+                }],
+            }, {
+                name: 'bestfriends solution',
+                title: 'Solution',
+                img: '/assets/project_images/bestfriends/pixel_triple.png',
+                alt: 'Three images of bestfriends mobile app',
+                subsections: [{
+                    name: 'bestfriends solution p1',
+                    type: 'paragraph',
+                    contents: [
+                        'Our solution was to create a mobile app that allows shelter staff to take photos and be notified of whether they meet Best Friend\'s image requirements.',
+                    ],
+                }, {
+                    name: 'bestfriends solution p2',
+                    type: 'breakdown',
+                    contents: [
+                        'The requirements included:',
+                        '',
+                        'Good lighting',
+                        'Animal\'s face must be centered',
+                        'Animal\'s face must be in focus',
+                    ],
+                }, {
+                    name: 'bestfriends solution p3',
+                    type: 'paragraph',
+                    contents: [
+                        'Photos are taken in the mobile app and sent to a backend server to be processed. User’s can view what requirements each photo passed and failed before saving.',
                     ],
                 }],
             }],
