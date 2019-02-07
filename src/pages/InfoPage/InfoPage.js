@@ -11,13 +11,13 @@ class InfoPage extends Component {
     return (
       <div className="InfoPage">
         <div className="InfoPage-section">
-          { info && <GeneralInfo {...info.generalInfo}></GeneralInfo> }
+          { info && <GeneralInfo {...info.generalInfo} /> }
         </div>
         <div className="InfoPage-divider"></div>
         <div className="InfoPage-projects">
           <div className="InfoPage-header">Projects</div>
           { info.projectsInfo.map(projectInfo => (
-          <ProjectInfo {...projectInfo}/> ))}
+          <ProjectInfo key={projectInfo.name} {...projectInfo} /> ))}
         </div>
       </div>
     )
