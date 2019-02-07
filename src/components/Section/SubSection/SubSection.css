@@ -4,6 +4,10 @@
     align-items: stretch;
 }
 
+.SubSection-title {
+    color: #727272;
+}
+
 .SubSection-breakdown {
     color: #5C5C5C;
     padding: 1em;
