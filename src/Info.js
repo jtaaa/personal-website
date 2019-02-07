@@ -54,9 +54,27 @@ const info = {
         projectsInfo: [{
             img: '/assets/project_images/bestfriends/pixel_camera.png',
             alt: '',
+            name: 'bestfriends',
             title: 'Best Friends Animal Society',
             titleLink: 'https://bestfriends.org/',
-            description: 'Best Friends runs America’s largest no-kill animal sanctuary and aims to achieve nation-wide no-kill status by 2025.'
+            description: 'Best Friends runs America’s largest no-kill animal sanctuary and aims to achieve nation-wide no-kill status by 2025.',
+            sections: [{
+                name: 'problem',
+                title: 'Problem',
+                subsections: [{
+                    name: 'p1',
+                    type: 'paragraph',
+                    contents: [
+                        'Based on data collected by Best Friends, it was found that the image quality of animal profile pics was the no. 1 factor that determined whether an animal would be adopted or not.',
+                    ],
+                }, {
+                    name: 'p2',
+                    type: 'paragraph',
+                    contents: [
+                        'Since animals come to the sanctuary from a number of different shelters nation-wide, image quality was not enforced and varied greatly.'
+                    ],
+                }],
+            }],
         }],
     },
     '/info/acs': {
