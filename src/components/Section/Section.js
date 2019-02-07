@@ -9,8 +9,8 @@ const Section = ({ title, img, alt, subsections }) => {
         <div className="Section-title">{ title }</div>
         <div className="Section-underline"></div>
         { img && 
-        <img src={img} alt={alt}/> }
-        { subsections.map(subsection => (
+        <img className="Section-img" src={img} alt={alt}/> }
+        { subsections && subsections.map(subsection => (
             <SubSection key={subsection.name} {...subsection}></SubSection>
         ))}
     </div>
