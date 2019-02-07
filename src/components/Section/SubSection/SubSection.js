@@ -17,8 +17,7 @@ const SubSection = ({ title, type, contents, backgroundColor, color }) => {
             return (
               <div className="SubSection-breakdown" style={{ backgroundColor, color }}>
                 { contents.map((content, index) => (
-                <div key={index} className="SubSection-breakdown-point">{ content }</div>
-                ))}
+                <div key={index} className="SubSection-breakdown-point">{ content }</div> ))}
               </div>
             );
         default:
