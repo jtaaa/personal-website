@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const splashRouter = require('./routes/splash');
+const infoRouter = require('./routes/info');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/splash', splashRouter);
+app.use('/api/info', infoRouter);
 
 // Production react frontend serving
 if (process.env.NODE_ENV === 'production') {
