@@ -14,9 +14,7 @@ router.get('/', (req, res, next) => {
   }
   query
     .exec()
-    .then(infos => {
-      res.json(infos);
-    })
+    .then(infos => res.json(infos))
     .catch(err => {
       console.error(err);
       next(err);
@@ -36,6 +34,9 @@ router.post('/', (req, res, next) => {
     });
 });
 
+/* PUT info
+ *--> Update existing or create a new info document
+ */
 router.put('/:name', (req, res, next) => {
   const info = req.body;
   InfoModel.findOneAndUpdate({ name: req.params.name }, info)
