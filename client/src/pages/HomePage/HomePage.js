@@ -8,11 +8,24 @@ class HomePage extends Component {
   constructor(props) {
     super (props);
 
-    this.state = { fadedout: true };
+    this.state = { fadedout: true, splash: '' };
+  }
+
+  async getNewSplash() {
+    fetch('/api/splash')
+      .then(res => res.json())
+      .then(splash => {
+        this.setState({ splash })
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({ splash: err })
+      });
   }
 
   componentDidMount() {
     setTimeout(() => this.setState({ fadedout: false }), 800);
+    this.getNewSplash();
   }
   
   render() {
@@ -27,7 +40,7 @@ class HomePage extends Component {
           <div className="HomePage-subtitle">Software Developer</div>
           <div className="HomePage-description">
             <a href="https://www.ibm.com/cloud/" target="_blank" rel="noopener noreferrer">Cloud Platform</a> Developer at <a href="https://www.ibm.com/ca-en/" target="_blank" rel="noopener noreferrer">IBM</a> Toronto Labs.<br/>
-            On season 1 episode 18 of <a href="https://www.ctv.ca/This-Is-Us" target="_blank" rel="noopener noreferrer">This is Us</a>.<br/>
+            { this.state.splash }<br/>
           </div>
           <LinkList linkGroups={linkGroups} />
         </div>
