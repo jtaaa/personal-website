@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const splashRouter = require('./routes/spash');
+const splashRouter = require('./routes/splash');
 
 const app = express();
 

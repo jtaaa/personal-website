@@ -1,6 +1,6 @@
 const express = require('express');
 
-const SplashModel = require('./../db').SplashModel;
+const SplashModel = require('../db').SplashModel;
 
 const router = express.Router();
 
