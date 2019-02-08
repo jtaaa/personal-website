@@ -1,0 +1,42 @@
+# See https://youtu.be/dQw4w9WgXcQ for more about ignoring files.
+
+# -----------------------------------------------------------------------------
+# Junk
+#
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# testing
+coverage
+
+# firebase
+.firebase
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# -----------------------------------------------------------------------------
+# Node.js Junk
+#
+
+# -----------------------------------------------------------------------------
+# React Junk
+#
+
+# production
+/client/build
+
+# misc
+/client/logos
