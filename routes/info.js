@@ -36,4 +36,17 @@ router.post('/', (req, res, next) => {
     });
 });
 
+router.put('/:name', (req, res, next) => {
+  const info = req.body;
+  InfoModel.findOneAndUpdate({ name: req.params.name }, info)
+    .setOptions({ upsert: true, new: true })
+    .lean()
+    .exec()
+    .then(doc => res.json(doc))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
 module.exports = router;
