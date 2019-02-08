@@ -1,6 +1,6 @@
 const Schema = require('mongoose').Schema;
 
-const ProjectsSchema = new Schema({
+const ProjectSchema = new Schema({
   name: {
     type: String,
     unique: true,
@@ -32,4 +32,4 @@ const ProjectsSchema = new Schema({
   },
 });
 
-module.exports = ProjectsSchema;
+module.exports = ProjectSchema;
