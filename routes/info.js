@@ -8,11 +8,12 @@ const router = express.Router();
  *--> Returns all info in an array
  */
 router.get('/', (req, res, next) => {
-  const query = InfoModel.find({}).lean();
+  const query = InfoModel.find({});
   if (req.query.populate) {
     query.populate({ path: 'projects', options: { lean: true } });
   }
   query
+    .lean()
     .exec()
     .then(infos => res.json(infos))
     .catch(err => {
