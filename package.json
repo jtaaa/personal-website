@@ -19,6 +19,5 @@
   "devDependencies": {
     "@types/mongoose": "^5.3.12",
     "concurrently": "^4.1.0"
-  },
-  "proxy": "http://localhost:5000/"
+  }
 }
