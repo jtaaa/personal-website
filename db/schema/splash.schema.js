@@ -32,7 +32,7 @@ const SplashSchema = new Schema({
     max: [31536000000, 'That\'s kinda lazy bro, just make more when the lifetime runs out or turn them back on'],
     required: true,
   },
-  date: {
+  dateAdded: {
     type: Date,
     default: Date.now,
     required: true,
