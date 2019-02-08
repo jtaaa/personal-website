@@ -5,6 +5,8 @@ const GeneralInfoSchema = require('./generalinfo.schema');
 const InfoSchema = new Schema({
   name: {
     type: String,
+    index: true,
+    unique: true,
     required: true,
   },
   title: {
