@@ -1,5 +1,7 @@
 const Schema = require('mongoose').Schema;
 
+const GeneralInfoSchema = require('./generalinfo.schema');
+
 const InfoSchema = new Schema({
   name: {
     type: String,
@@ -7,6 +9,7 @@ const InfoSchema = new Schema({
   },
   title: {
     type: String,
+    unique: true,
     required: true,
   },
   logo: {
@@ -18,6 +21,16 @@ const InfoSchema = new Schema({
   },
   href: {
     type: String,
+  },
+  generalInfo: {
+    type: GeneralInfoSchema,
+    required: true,
+  },
+  projects: {
+    type: [{
+      type: Schema.Types.ObjectId,
+      ref: 'project',
+    }],
   },
 });
 
