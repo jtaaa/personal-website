@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 
 const CONFIG = require('./../config');
 
-console.log(CONFIG);
-
 mongoose.connect(`mongodb://${CONFIG.DB_USER}:${CONFIG.DB_PASS}@${CONFIG.DB_URI}`, {
   useCreateIndex: true,
   useNewUrlParser: true,
