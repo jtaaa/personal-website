@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
       });
 
       const rand2 = Math.random() * totalWeight;
-      res.json(splashs[Math.floor(rand2)].value);
+      res.json(splashs[splashMap[Math.floor(rand2)]].value);
     })
     .catch(err => {
       console.error(err);
