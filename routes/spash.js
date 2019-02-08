@@ -10,6 +10,7 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
   const rand1 = Math.random();
   SplashModel.find({ weight: { $gt: rand1 } })
+    .select(['dateAdded', 'weight', 'value'])
     .sort({ weight: 'asc'})
     .lean()
     .exec()
@@ -26,7 +27,7 @@ router.get('/', function(req, res, next) {
       });
 
       const rand2 = Math.random() * totalWeight;
-      res.json(splashs[Math.floor(rand2)]);
+      res.json(splashs[Math.floor(rand2)].value);
     })
     .catch(err => {
       console.error(err);
