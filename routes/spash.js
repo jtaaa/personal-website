@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
     .exec()
     .then(splashs => {
       if (!splashs.length) {
-        return next(new Error('No splashes with baseline in the database!'));
+        return next(new Error('No splashes with baseline weight in the database!'));
       }
 
       let splashMap = [];
