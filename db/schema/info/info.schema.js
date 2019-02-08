@@ -33,6 +33,8 @@ const InfoSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'project',
     }],
+    default: [],
+    required: true,
   },
 });
 
