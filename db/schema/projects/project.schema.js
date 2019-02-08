@@ -3,6 +3,7 @@ const Schema = require('mongoose').Schema;
 const ProjectSchema = new Schema({
   name: {
     type: String,
+    index: true,
     unique: true,
     required: true,
   },
