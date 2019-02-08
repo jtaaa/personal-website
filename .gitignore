@@ -1,18 +1,19 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# See https://youtu.be/dQw4w9WgXcQ for more about ignoring files.
+
+# -----------------------------------------------------------------------------
+# Junk
+#
 
 # dependencies
-/node_modules
-/.pnp
+node_modules
+.pnp
 .pnp.js
 
 # testing
-/coverage
-
-# production
-/build
+coverage
 
 # firebase
-/.firebase
+.firebase
 
 # misc
 .DS_Store
@@ -25,5 +26,20 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# project specific
-logos
+
+# -----------------------------------------------------------------------------
+# Node.js Junk
+#
+
+# environmental variables
+.env
+
+# -----------------------------------------------------------------------------
+# React Junk
+#
+
+# production
+/client/build
+
+# misc
+/client/logos
