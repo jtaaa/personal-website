@@ -1,0 +1,74 @@
+.Header {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 196px;
+    margin: 0.35em;
+    background-color: white;
+    border-radius: 10px;
+    transition: background-color cubic-bezier(0.86, 0, 0.07, 1) 300ms;
+}
+
+.Header-menu-open {
+    background-color: #FBF4F4;
+}
+
+.Header-img-a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 72px;
+    line-height: 0;
+    width: 48px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
+}
+
+.Header-img {
+    width: 48px;
+    border-radius: 50%;
+}
+
+.Header-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 1.5em;
+    text-align: center;
+    margin: 1em 0 0.667em 0;
+}
+
+.Header-underline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    width: 120px;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+    transition: width ease-in 200ms;
+}
+
+.Header-underline-long {
+    width: 240px;
+}
+
+.Header-menu-list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+    height: 48px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.Header-menu-img {
+    position: static;
+    margin-left: 0.75em;
+    margin-right: 0.75em; 
+}

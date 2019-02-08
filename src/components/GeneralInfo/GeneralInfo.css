@@ -1,0 +1,28 @@
+.GeneralInfo {
+    margin: 2em 0 1em 0;
+}
+
+.GeneralInfo-description {
+    text-align: center;
+}
+
+.GeneralInfo-info {
+    margin: 2em 0 1em 0;
+    padding: 1em 1.5em;
+    background-color: #F8FBFD;
+    border-radius: 8px;
+}
+
+.GeneralInfo-info-item {
+    margin: 0.5em 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.GeneralInfo-info-label {
+    color: #4e4e4e;
+}
+
+.GeneralInfo-info-value {
+    text-align: end;
+}

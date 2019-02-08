@@ -1,73 +1,93 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Source+Serif+Pro');
-
 .App {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-@media only screen and (min-width: 1024px) {
-  .App {
-    flex-direction: row;
-  }
+    font-family: 'Josefin Sans', sans-serif;
 }
 
-.App-backdrop {
-  height: 40vh;
-  object-position: center 25%;
-  object-fit: cover;
+.fade-enter {
+    opacity: 0.01;
 }
-@media only screen and (min-width: 1024px) {
-  .App-backdrop {
-    width: 50%;
-    height: 100vh;
-    object-position: top;
-  }
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
 }
-
-.App-content {
-  font-family: 'Josefin Sans', sans-serif;
-  height: 60vh;
-  max-width: 500px;
-  padding: 4em 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
+.fade-leave {
+  opacity: 1;
 }
-@media only screen and (min-width: 1024px) {
-  .App-content {
-    text-align: end;
-    width: 50%;
-    height: 100vh;
-    margin: 0 auto;
-    padding: 3em;
-  }
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
 }
 
-.App-title {
-  font-size: 3em;
+.fade-long-enter {
+    opacity: 0.01;
 }
-@media only screen and (min-width: 1024px) {
-  .App-title {
-    font-size: 4em;
-  }
+.fade-long-enter.fade-long-enter-active {
+    opacity: 1;
+    transition: opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
 }
-
-.App-subtitle {
-  color: #444444;
-  font-size: 0.75em;
-  letter-spacing: 2px;
-  padding: 1em 0;
+.fade-long-leave {
+  opacity: 1;
 }
-@media only screen and (min-width: 1024px) {
-  .App-subtitle {
-    font-size: 1em;
-  }
+.fade-long-leave.fade-long-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-.App-description {
-  color: #555555;
-  font-family: 'Source Serif Pro', serif;
-  padding: 1em 0;
+.header-move-0-enter {
+  transform: translate(-108px, 32px);
+}
+.header-move-0-enter.header-move-0-enter-active {
+  transform: translate(0, 0);
+  transition: transform 200ms ease-in;
+}
+.header-move-0-leave {
+  transform: translate(0, 0);
+}
+.header-move-0-leave.header-move-0-leave-active {
+  transform: translate(-108px, 32px);
+  transition: transform 200ms ease-in;
+}
+
+.header-move-1-enter {
+  transform: translate(-36px, 32px);
+}
+.header-move-1-enter.header-move-1-enter-active {
+  transform: translate(0, 0);
+  transition: transform 200ms ease-in;
+}
+.header-move-1-leave {
+  transform: translate(0, 0);
+}
+.header-move-1-leave.header-move-1-leave-active {
+  transform: translate(-36px, 32px);
+  transition: transform 200ms ease-in;
+}
+
+.header-move-2-enter {
+    transform: translate(36px, 32px);
+}
+.header-move-2-enter.header-move-2-enter-active {
+    transform: translate(0, 0);
+    transition: transform 200ms ease-in;
+}
+.header-move-2-leave {
+  transform: translate(0, 0);
+}
+.header-move-2-leave.header-move-2-leave-active {
+  transform: translate(36px, 32px);
+  transition: transform 200ms ease-in;
+}
+
+.header-move-3-enter {
+  transform: translate(108px, 32px);
+}
+.header-move-3-enter.header-move-3-enter-active {
+  transform: translate(0, 0);
+  transition: transform 200ms ease-in;
+}
+.header-move-3-leave {
+  transform: translate(0, 0);
+}
+.header-move-3-leave.header-move-3-leave-active {
+  transform: translate(108px, 32px);
+  transition: transform 200ms ease-in;
 }

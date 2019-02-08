@@ -54,6 +54,9 @@
     .LinkList-link-img {
         filter: opacity(45%) grayscale(100%);
     }
+    .LinkList-color-img {
+        filter: none;
+    }    
 }
 
 .LinkList-round-img {
