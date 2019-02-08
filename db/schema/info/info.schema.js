@@ -36,6 +36,11 @@ const InfoSchema = new Schema({
     default: [],
     required: true,
   },
+  enabled: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
 });
 
 module.exports = InfoSchema;
