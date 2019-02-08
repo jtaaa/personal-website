@@ -29,9 +29,7 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
   const info = req.body;
   InfoModel.create(info)
-    .then(doc => {
-      res.json(doc.toObject());
-    })
+    .then(doc => res.json(doc.toObject()))
     .catch(err => {
       console.error(err);
       next(err);

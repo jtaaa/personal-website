@@ -41,9 +41,7 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
   const splash = req.body;
   SplashModel.create(splash)
-    .then(doc => {
-      res.json(doc.toObject());
-    })
+    .then(doc => res.json(doc.toObject()))
     .catch(err => {
       console.error(err);
       next(err);
