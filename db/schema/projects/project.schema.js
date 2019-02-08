@@ -1,5 +1,7 @@
 const Schema = require('mongoose').Schema;
 
+const ProjectSectionSchema = require('./projectsection.schema');
+
 const ProjectSchema = new Schema({
   name: {
     type: String,
@@ -31,6 +33,11 @@ const ProjectSchema = new Schema({
       alt: { type: String, required: true },
     },
   },
+  sections: {
+    type: [ ProjectSectionSchema ],
+    default: [],
+    required: true,
+  }
 });
 
 module.exports = ProjectSchema;
