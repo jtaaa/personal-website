@@ -7,7 +7,7 @@ const router = express.Router();
 /* GET splash
  *--> Returns a random splash based on weight
  */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   const rand1 = Math.random();
   SplashModel.find({ weight: { $gt: rand1 } })
     .select(['dateAdded', 'weight', 'value'])
@@ -38,7 +38,7 @@ router.get('/', function(req, res, next) {
 /* POST splash
  *--> Create a new splash
  */
-router.post('/', function(req, res, next) {
+router.post('/', (req, res, next) => {
   const splash = req.body;
   SplashModel.create(splash)
     .then(doc => {
