@@ -50,6 +50,35 @@ router.post('/', function(req, res, next) {
     });
 });
 
+/* PUT info
+ *--> Update existing or create a new splash
+ */
+router.put('/:id', (req, res, next) => {
+  const info = req.body;
+  SplashModel.findOneAndUpdate({ _id: req.params.id }, info)
+    .setOptions({ new: true })
+    .lean()
+    .exec()
+    .then(doc => doc ?
+        res.json(doc)
+      : next({
+          statusCode: 404,
+          message: 'Couldn\'t find a record with that id my bro.'
+        })
+    )
+    .catch(err => {
+      if (err.name === 'CastError') {
+        next({
+          statusCode: 404,
+          message: 'Couldn\'t find a record with that id my bro.'
+        });
+      } else {
+        console.error(err);
+        next(err);
+      }
+    });
+});
+
 /* DELETE splash
  *--> Delete a splash
  */
