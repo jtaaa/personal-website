@@ -8,6 +8,9 @@
       "outDir": "./dist",
       "baseUrl": "."
   },
+  "files": [
+    "bin/www.ts"
+  ],
   "include": [
       "./**/*.ts"
   ],
