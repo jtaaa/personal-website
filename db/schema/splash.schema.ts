@@ -15,6 +15,7 @@ const SplashSchema = new Schema({
   },
   value: {
     type: String,
+    unique: true,
     required: true,
   },
   weight: {
