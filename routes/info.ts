@@ -1,6 +1,7 @@
 import * as express from 'express';
 
 import { InfoModel } from './../db';
+import { oneLine } from './../utils/templateLiteralTags';
 
 const router = express.Router();
 
@@ -63,9 +64,54 @@ router.delete('/:name', (req, res, next) => {
         })
       : next({
           statusCode: 404,
-          message: 'Couldn\'t find a record with that name my bro',
+          message: 'Couldn\'t find an info document with that name my bro.',
         })
     )
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+router.put('/:name/projects', (req, res, next) => {
+  const projectIds = req.body;
+  InfoModel.findOneAndUpdate(
+    { name: req.params.name },
+    { $addToSet: { projects: { $each: projectIds } } },
+  )
+    .setOptions({ new: true, runValidators: true })
+    .lean()
+    .exec()
+    .then(doc => res.json(doc))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+router.delete('/:name/projects', (req, res, next) => {
+  const projectIds = req.body;
+  InfoModel.update(
+    { name: req.params.name },
+    { $pullAll: { projects: projectIds }}
+  )
+    .exec()
+    .then(({ n, nModified }) => {
+      if (nModified) 
+        res.json({
+          message: 'Successfully deleted my bro!'
+        });
+      else if (n)
+        next({
+          statusCode: 404,
+          message: oneLine`Couldn\'t find any projects on the ${req.params.name}
+                           info doc with those ids my bro.`,
+        })
+      else next({
+        statusCode: 404,
+        message: 'Couldn\'t find a project with that name my bro.',
+      });
+    })
     .catch(err => {
       console.error(err);
       next(err);
