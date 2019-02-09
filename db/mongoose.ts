@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import * as mongoose from 'mongoose';
 
-const CONFIG = require('./../config');
+import CONFIG from './../config';
 
 mongoose.connect(`mongodb://${CONFIG.DB_USER}:${CONFIG.DB_PASS}@${CONFIG.DB_URI}`, {
   useCreateIndex: true,
@@ -13,4 +13,4 @@ db.once('open', () => {
   console.log(`Connected to ${CONFIG.DB_URI} as ${CONFIG.DB_USER}`);
 });
 
-module.exports = db;
+export default db;

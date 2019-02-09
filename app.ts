@@ -1,10 +1,11 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+import * as dotenv from 'dotenv'; dotenv.config();
+import * as express from 'express';
+import * as path from 'path';
+import * as cookieParser from 'cookie-parser';
+import * as logger from 'morgan';
 
-const splashRouter = require('./routes/spash');
+import splashRouter from './routes/splash';
+import infoRouter from './routes/info';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/splash', splashRouter);
+app.use('/api/info', infoRouter);
 
 // Production react frontend serving
 if (process.env.NODE_ENV === 'production') {
@@ -38,4 +40,4 @@ app.use((err, req, res, next) => {
   }
 });
 
-module.exports = app;
+export default app;
