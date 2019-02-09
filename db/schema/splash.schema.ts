@@ -1,4 +1,4 @@
-const Schema = require('mongoose').Schema;
+import { Schema } from 'mongoose';
 
 const SplashSchema = new Schema({
   title: {
@@ -39,4 +39,4 @@ const SplashSchema = new Schema({
   },
 });
 
-module.exports = SplashSchema;
+export default SplashSchema;

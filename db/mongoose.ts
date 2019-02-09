@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import * as mongoose from 'mongoose';
 
 const CONFIG = require('./../config');
 
@@ -13,4 +13,4 @@ db.once('open', () => {
   console.log(`Connected to ${CONFIG.DB_URI} as ${CONFIG.DB_USER}`);
 });
 
-module.exports = db;
+export default db;

@@ -1,6 +1,6 @@
-const express = require('express');
+import * as express from 'express';
 
-const SplashModel = require('./../db').SplashModel;
+import { SplashModel } from '../db';
 
 const router = express.Router();
 
@@ -50,4 +50,4 @@ router.post('/', function(req, res, next) {
     });
 });
 
-module.exports = router;
+export default router;
