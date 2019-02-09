@@ -72,4 +72,20 @@ router.delete('/:name', (req, res, next) => {
     });
 });
 
+router.put('/:name/projects', (req, res, next) => {
+  const projectIds = req.body;
+  InfoModel.findOneAndUpdate(
+    { name: req.params.name },
+    { $addToSet: { projects: { $each: projectIds } } },
+  )
+    .setOptions({ new: true, runValidators: true })
+    .lean()
+    .exec()
+    .then(doc => res.json(doc))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
 export default router;
