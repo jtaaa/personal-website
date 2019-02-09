@@ -48,4 +48,17 @@ router.post('/', (req, res, next) => {
     });
 });
 
+/* DELETE splash
+ *--> Delete a splash
+ */
+router.delete('/:id', (req, res, next) => {
+  SplashModel.deleteOne({ _id: req.params.id })
+    .exec()
+    .then(_ => res.json({ message: 'Successfully deleted my bro!' }))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
 module.exports = router;
