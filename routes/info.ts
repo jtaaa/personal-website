@@ -1,6 +1,6 @@
-const express = require('express');
+import * as express from 'express';
 
-const InfoModel = require('./../db').InfoModel;
+import { InfoModel } from './../db';
 
 const router = express.Router();
 
@@ -72,4 +72,4 @@ router.delete('/:name', (req, res, next) => {
     });
 });
 
-module.exports = router;
+export default router;

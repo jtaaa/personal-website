@@ -1,6 +1,6 @@
-const Schema = require('mongoose').Schema;
+import { Schema } from 'mongoose';
 
-const GeneralInfoSchema = require('./generalinfo.schema');
+import GeneralInfoSchema from './generalinfo.schema';
 
 const InfoSchema = new Schema({
   name: {
@@ -43,4 +43,4 @@ const InfoSchema = new Schema({
   },
 });
 
-module.exports = InfoSchema;
+export default InfoSchema;

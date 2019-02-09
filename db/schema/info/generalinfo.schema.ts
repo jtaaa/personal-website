@@ -1,4 +1,4 @@
-const Schema = require('mongoose').Schema;
+import { Schema } from 'mongoose';
 
 const GeneralInfo = new Schema({
   description: {
@@ -13,4 +13,4 @@ const GeneralInfo = new Schema({
   },
 });
 
-module.exports = GeneralInfo;
+export default GeneralInfo;

@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-import { SplashModel } from '../db';
+import { SplashModel } from './../db';
 
 const router = express.Router();
 
@@ -44,6 +44,27 @@ router.post('/', function(req, res, next) {
     .then(doc => {
       res.json(doc);
     })
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+/* DELETE splash
+ *--> Delete a splash
+ */
+router.delete('/:id', (req, res, next) => {
+  SplashModel.deleteOne({ _id: req.params.id })
+    .exec()
+    .then(({ n }) => n ?
+        res.json({
+          message: 'Successfully deleted my bro!'
+        })
+      : next({
+          statusCode: 404,
+          message: 'Couldn\'t find a record with that name my bro',
+        })
+    )
     .catch(err => {
       console.error(err);
       next(err);

@@ -1,6 +1,6 @@
-const Schema = require('mongoose').Schema;
+import { Schema } from 'mongoose';
 
-const ProjectSubSectionSchema = require('./projectsubsection.schema');
+import ProjectSubSectionSchema from './projectsubsection.schema';
 
 const ProjectSectionSchema = new Schema({
   name: {
@@ -20,4 +20,4 @@ const ProjectSectionSchema = new Schema({
   },
 });
 
-module.exports = ProjectSectionSchema;
+export default ProjectSectionSchema;
