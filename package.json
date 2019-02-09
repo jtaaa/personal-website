@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./dist/bin/www",
+    "start": "cd dist && node ./bin/www",
     "tsc": "tsc && cp .env ./dist/.env",
     "client": "cd client && npm start",
     "server": "concurrently --kill-others-on-fail \"tsc -w --preserveWatchOutput\" \"cd dist && nodemon ./bin/www.js\"",
