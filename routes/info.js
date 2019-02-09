@@ -5,7 +5,7 @@ const InfoModel = require('./../db').InfoModel;
 const router = express.Router();
 
 /* GET info
- *--> Returns all info in an array
+ *--> Returns all info documents in an array
  */
 router.get('/', (req, res, next) => {
   const query = InfoModel.find({});
@@ -45,6 +45,27 @@ router.put('/:name', (req, res, next) => {
     .lean()
     .exec()
     .then(doc => res.json(doc))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+/* DELETE info
+ *--> Delete an info document
+ */
+router.delete('/:name', (req, res, next) => {
+  InfoModel.deleteOne({ name: req.params.name })
+    .exec()
+    .then(({ n }) => n ?
+        res.json({
+          message: 'Successfully deleted my bro!'
+        })
+      : next({
+          statusCode: 404,
+          message: 'Couldn\'t find a record with that name my bro',
+        })
+    )
     .catch(err => {
       console.error(err);
       next(err);
