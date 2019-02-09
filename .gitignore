@@ -31,6 +31,9 @@ yarn-error.log*
 # Node.js Junk
 #
 
+# production
+/dist
+
 # environmental variables
 .env
 
