@@ -1,6 +1,7 @@
 import { Schema } from 'mongoose';
 
 import GeneralInfoSchema from './generalinfo.schema';
+import { ProjectModel } from './../../models/project.model';
 
 const InfoSchema = new Schema({
   name: {
@@ -32,6 +33,11 @@ const InfoSchema = new Schema({
     type: [{
       type: Schema.Types.ObjectId,
       ref: 'project',
+      validate: {
+        validator: async _id => ProjectModel.count({ _id }, count => count > 0),
+        message: 'That\'s not a valid project id my dude',
+        type: 'ForeignKeyError',
+      },
     }],
     default: [],
     required: true,
@@ -42,5 +48,7 @@ const InfoSchema = new Schema({
     required: true,
   },
 });
+
+InfoSchema.path('projects').validate(() => {},)
 
 export default InfoSchema;
