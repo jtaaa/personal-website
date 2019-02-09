@@ -1,6 +1,7 @@
 import * as express from 'express';
 
 import { InfoModel } from './../db';
+import { oneLine } from './../utils/templateLiteralTags';
 
 const router = express.Router();
 
