@@ -1,10 +1,10 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+import * as dotenv from 'dotenv'; dotenv.config();
+import * as express from 'express';
+import * as path from 'path';
+import * as cookieParser from 'cookie-parser';
+import * as logger from 'morgan';
 
-const splashRouter = require('./routes/spash');
+import splashRouter from './routes/splash';
 
 const app = express();
 
