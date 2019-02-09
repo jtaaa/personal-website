@@ -54,7 +54,15 @@ router.post('/', (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
   SplashModel.deleteOne({ _id: req.params.id })
     .exec()
-    .then(_ => res.json({ message: 'Successfully deleted my bro!' }))
+    .then(({ n }) => n ?
+        res.json({
+          message: 'Successfully deleted my bro!'
+        })
+      : next({
+          statusCode: 404,
+          message: 'Couldn\'t find a record with that name my bro',
+        })
+    )
     .catch(err => {
       console.error(err);
       next(err);
