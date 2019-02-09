@@ -63,7 +63,7 @@ router.delete('/:name', (req, res, next) => {
         })
       : next({
           statusCode: 404,
-          message: 'Couldn\'t find a record with that name my bro',
+          message: 'Couldn\'t find a record with that name my bro.',
         })
     )
     .catch(err => {
