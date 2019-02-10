@@ -9,3 +9,4 @@ steps:
   entrypoint: 'gcloud'
   args: ['app', 'deploy']
   dir: 'server'
+timeout: 1200s
