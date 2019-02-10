@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "prestart": "node dist/getEnv",
     "start": "cd dist && NODE_ENV=production node ./bin/www",
     "build": "tsc && npm run build --prefix ../client && rm -rf dist/build/ && mv ../client/build/ dist/build/",
     "client": "cd ../client && npm start",
@@ -10,6 +11,7 @@
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "dependencies": {
+    "@google-cloud/storage": "^2.4.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^6.2.0",
