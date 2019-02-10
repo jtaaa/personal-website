@@ -5,7 +5,7 @@
   "scripts": {
     "start": "cd dist && node ./bin/www",
     "build": "tsc && npm run build --prefix ../client",
-    "client": "cd client && npm start",
+    "client": "cd ../client && npm start",
     "server": "concurrently --kill-others-on-fail \"tsc -w --preserveWatchOutput\" \"cd dist && nodemon ./bin/www.js\"",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
@@ -29,7 +29,7 @@
     "nodemon": "^1.18.10",
     "tslint": "^5.12.1",
     "typescript": "^3.3.3"
-  }, 
+  },
   "engines": {
     "node": "^10.0.0",
     "npm": "^6.7.0"
