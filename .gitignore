@@ -30,7 +30,7 @@ yarn-error.log*
 #
 
 # production
-/dist
+dist
 
 # environmental variables
 .env
