@@ -15,7 +15,9 @@
     "dotenv": "^6.2.0",
     "express": "~4.16.0",
     "mongoose": "^5.4.10",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.1",
@@ -25,6 +27,8 @@
     "@types/mongodb": "^3.1.19",
     "@types/mongoose": "^5.3.12",
     "@types/morgan": "^1.7.35",
+    "@types/passport": "^1.0.0",
+    "@types/passport-google-oauth": "^1.0.39",
     "concurrently": "^4.1.0",
     "nodemon": "^1.18.10",
     "tslint": "^5.12.1",
