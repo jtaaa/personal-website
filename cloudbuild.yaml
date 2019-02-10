@@ -1,9 +1,11 @@
 steps:
 - name: 'gcr.io/cloud-builders/npm'
-  args: ['install']
-  dir: 'server'
+  args: ['install', '--prefix', 'client']
 - name: 'gcr.io/cloud-builders/npm'
-  args: ['test']
+  args: ['install', '--prefix', 'server']
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['run', 'build', '--prefix', 'server']
+- name: google/cloud-sdk:230.0.0
+  entrypoint: 'gcloud'
+  args: ['app', 'deploy']
   dir: 'server'
-- name: "gcr.io/cloud-builders/gcloud"
-  args: ["app", "deploy", "server/app.yaml"]
