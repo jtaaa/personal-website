@@ -15,4 +15,12 @@ passport.use(new GoogleStategy(
   }
 ));
 
+passport.serializeUser((user: any, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  done(null, { id, 'what mate': 'dw' });
+});
+
 export { passport };
