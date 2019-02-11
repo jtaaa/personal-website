@@ -2,6 +2,7 @@ import * as passport from 'passport';
 import { OAuth2Strategy as GoogleStategy } from 'passport-google-oauth';
 
 import CONFIG from '../config';
+import { UserModel } from './../db';
 
 passport.use(new GoogleStategy(
   {
@@ -10,17 +11,35 @@ passport.use(new GoogleStategy(
     callbackURL: '/api/auth/google/callback',
   },
   (accessToken, refreshToken, profile, done) => {
-    console.log(profile);
-    return done(null, profile);
+    UserModel.findOneAndUpdate(
+      { googleId: profile.id },
+      { googleId: profile.id, displayName: profile.displayName },
+    )
+      .setOptions({ upsert: true, new: true, setDefaultsOnInsert: true })
+      .lean()
+      .exec()
+      .then(doc => done(null, doc))
+      .catch(err => {
+        console.error(err);
+        done(err);
+      });
   }
 ));
 
 passport.serializeUser((user: any, done) => {
-  done(null, user.id);
+  done(null, user._id);
 });
 
-passport.deserializeUser(function(id, done) {
-  done(null, { id, 'what mate': 'dw' });
+passport.deserializeUser((id, done) => {
+  UserModel.findById(id)
+    .lean()
+    .exec()
+    .then(user => {
+      done(null, user);
+    })
+    .catch(err => {
+      done(err);
+    });
 });
 
 export { passport };
