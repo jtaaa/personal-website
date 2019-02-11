@@ -4,6 +4,8 @@ import * as path from 'path';
 import * as cookieParser from 'cookie-parser';
 import * as logger from 'morgan';
 
+import { passport, session } from './auth';
+
 import authRouter from './routes/auth';
 import splashRouter from './routes/splash';
 import infoRouter from './routes/info';
@@ -16,6 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/api/auth', authRouter);
 app.use('/api/splash', splashRouter);
