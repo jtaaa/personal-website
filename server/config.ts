@@ -5,4 +5,5 @@ export default {
   GOOGLE_OAUTH_CLIENT_ID: process.env.GOOGLE_OAUTH_CLIENT_ID,
   GOOGLE_OAUTH_CLIENT_SECRET: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
   EXPRESS_SESH_SECRET: process.env.EXPRESS_SESH_SECRET,
+  HOMEPAGE_URL: process.env.NODE_ENV !== 'production' ? 'http://localhost:3000/' : '/',
 };
