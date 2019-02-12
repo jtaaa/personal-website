@@ -1,6 +1,7 @@
 import * as express from 'express';
 
 import { ProjectModel } from './../db';
+import { ensureAdmin } from './../auth';
 
 const router = express.Router();
 
@@ -21,7 +22,7 @@ router.get('/', (req, res, next) => {
 /* POST project
  *--> Create a new project document
  */
-router.post('/', (req, res, next) => {
+router.post('/', ensureAdmin(), (req, res, next) => {
   const project = req.body;
   ProjectModel.create(project)
     .then(doc => res.json(doc.toObject()))
@@ -34,7 +35,7 @@ router.post('/', (req, res, next) => {
 /* PUT project
  *--> Update existing or create a new project document
  */
-router.put('/:name', (req, res, next) => {
+router.put('/:name', ensureAdmin(), (req, res, next) => {
   const project = req.body;
   ProjectModel.findOneAndUpdate({ name: req.params.name }, project)
     .setOptions({ upsert: true, new: true })
@@ -50,7 +51,7 @@ router.put('/:name', (req, res, next) => {
 /* DELETE project
  *--> Delete an project document
  */
-router.delete('/:name', (req, res, next) => {
+router.delete('/:name', ensureAdmin(), (req, res, next) => {
   ProjectModel.deleteOne({ name: req.params.name })
     .exec()
     .then(({ n }) => n ?
