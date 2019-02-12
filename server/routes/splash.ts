@@ -1,6 +1,7 @@
 import * as express from 'express';
 
 import { SplashModel } from './../db';
+import { ensureAdmin } from './../auth';
 
 const router = express.Router();
 
@@ -38,7 +39,7 @@ router.get('/', function(req, res, next) {
 /* POST splash
  *--> Create a new splash
  */
-router.post('/', function(req, res, next) {
+router.post('/', ensureAdmin(), function(req, res, next) {
   const splash = req.body;
   SplashModel.create(splash)
     .then(doc => {
@@ -53,7 +54,7 @@ router.post('/', function(req, res, next) {
 /* PUT info
  *--> Update existing or create a new splash
  */
-router.put('/:id', (req, res, next) => {
+router.put('/:id', ensureAdmin(), (req, res, next) => {
   const info = req.body;
   SplashModel.findOneAndUpdate({ _id: req.params.id }, info)
     .setOptions({ new: true })
@@ -82,7 +83,7 @@ router.put('/:id', (req, res, next) => {
 /* DELETE splash
  *--> Delete a splash
  */
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', ensureAdmin(), (req, res, next) => {
   SplashModel.deleteOne({ _id: req.params.id })
     .exec()
     .then(({ n }) => n ?
