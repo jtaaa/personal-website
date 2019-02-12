@@ -70,7 +70,7 @@ class HomePage extends Component {
         <div className="HomePage-content">
           { this.state.user._id ?
               <div className="HomePage-user-widget">
-                <img className="HomePage-user-photo" src={this.state.user.photos[0]} alt="User photo"/>
+                <img className="HomePage-user-photo" src={this.state.user.photos[0]} alt="User profile"/>
               </div>
             : <div 
                 className={ClassSet`HomePage-login ${this.state.hiddenButtonState}`}
