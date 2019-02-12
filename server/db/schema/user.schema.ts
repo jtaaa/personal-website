@@ -11,6 +11,27 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  name: {
+    type: {
+      familyName: {
+        type: String,
+        required: true,
+      },
+      givenName: {
+        type: String,
+        required: true,
+      },
+    },
+    required: true,
+  },
+  gender: {
+    type: String,
+  },
+  photos: {
+    type: [ String ],
+    default: [],
+    required: true,
+  },
   roles: {
     type: [ String ],
     default: [],

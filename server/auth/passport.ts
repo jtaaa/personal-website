@@ -13,7 +13,7 @@ passport.use(new GoogleStategy(
   (accessToken, refreshToken, profile, done) => {
     UserModel.findOneAndUpdate(
       { googleId: profile.id },
-      { googleId: profile.id, displayName: profile.displayName },
+      {  ...profile, googleId: profile.id, photos: [ profile.photos[0].value ] },
     )
       .setOptions({ upsert: true, new: true, setDefaultsOnInsert: true })
       .lean()
