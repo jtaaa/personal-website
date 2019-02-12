@@ -29,6 +29,7 @@
 }
 
 .HomePage-content {
+  position: relative;
   height: 60vh;
   max-width: 500px;
   padding: 4em 2em;
@@ -45,6 +46,33 @@
     margin: 0 auto;
     padding: 3em;
   }
+}
+
+.HomePage-login, .HomePage-login:visited {
+  cursor: pointer;
+  color: #a5a5a5;
+  text-align: right;
+  font-size: 0.75em;
+  opacity: 0.02;
+  padding: 1em 2em;
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  border: dashed 1px #a5a5a5;
+  border-radius: 20px;
+  transition: opacity ease-in-out 200ms;
+}
+@media only screen and (min-width: 1024px) {
+  .HomePage-login {
+    top: 96px;
+    right: 0;
+  }
+}
+.HomePage-login:hover {
+  opacity: 0.25;
+}
+.HomePage-login-shown, .HomePage-login-shown.HomePage-login:hover {
+  opacity: 1;
 }
 
 .HomePage-title {
