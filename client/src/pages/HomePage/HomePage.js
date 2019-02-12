@@ -57,7 +57,7 @@ class HomePage extends Component {
       case 'hidden':  return this.setState({ hiddenButtonState: 'shown' });
       case 'shown':
       default:        this.setState({ hiddenButtonState: 'hidden' });
-                      this.props.history.push('/api/auth/google');
+                      window.location.href = '/api/auth/google';
     }
   }
   
