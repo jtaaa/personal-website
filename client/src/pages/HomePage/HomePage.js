@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './HomePage.css';
 
 import LinkList from '../../components/LinkList/LinkList';
 import linkGroups from '../../Links';
 
+import { ClassSet } from '../../utils/templateLiteralTags';
+
 class HomePage extends Component {
   constructor(props) {
     super (props);
 
-    this.state = { fadedout: true, splash: '' };
+    this.state = {
+      fadedout: true,
+      splash: '',
+      user: {},
+      hiddenButtonState: 'hidden',
+    };
   }
 
   async getNewSplash() {
@@ -18,14 +26,38 @@ class HomePage extends Component {
         this.setState({ splash })
       })
       .catch(err => {
-        console.log(err);
-        this.setState({ splash: err })
+        this.setState({ splash: err.toString() });
       });
+  }
+
+  async getUser() {
+    fetch('/api/user')
+      .then(res => {
+        if (!res.ok) {
+          throw Error('You aren\'t logged in, but that\'s okay!');
+        }
+        return res.json();
+      })
+      .then(user => this.setState({ user }))
+      .catch(err => process.env.REACT_APP_ENV === 'development' || err.message === undefined ?
+          console.error(err)
+        : console.log(err.message)
+      );
   }
 
   componentDidMount() {
     setTimeout(() => this.setState({ fadedout: false }), 800);
     this.getNewSplash();
+    this.getUser();
+  }
+
+  onHiddenButtonPress() {
+    switch (this.state.hiddenButtonState) {
+      case 'hidden':  return this.setState({ hiddenButtonState: 'shown' });
+      case 'shown':
+      default:        this.setState({ hiddenButtonState: 'hidden' });
+                      this.props.history.push('/api/auth/google');
+    }
   }
   
   render() {
@@ -36,6 +68,15 @@ class HomePage extends Component {
           src="/assets/headshot.jpg"
           alt="Handsome headshot o.O" />
         <div className="HomePage-content">
+          { this.state.user._id ?
+              <div className="HomePage-user-widget">
+                <img className="HomePage-user-photo" src={this.state.user.photos[0]} alt="User photo"/>
+              </div>
+            : <div 
+                className={ClassSet`HomePage-login ${this.state.hiddenButtonState}`}
+                onClick={this.onHiddenButtonPress.bind(this)}>
+                Hidden Login Button
+              </div> }
           <div className="HomePage-title">Joshua Allum</div>
           <div className="HomePage-subtitle">Software Developer</div>
           <div className="HomePage-description">
@@ -49,4 +90,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);

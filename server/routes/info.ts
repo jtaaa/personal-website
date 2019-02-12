@@ -1,6 +1,8 @@
 import * as express from 'express';
 
 import { InfoModel } from './../db';
+import { ensureAdmin } from './../auth';
+
 import { oneLine } from './../utils/templateLiteralTags';
 
 const router = express.Router();
@@ -26,7 +28,7 @@ router.get('/', (req, res, next) => {
 /* POST info
  *--> Create a new info document
  */
-router.post('/', (req, res, next) => {
+router.post('/', ensureAdmin(), (req, res, next) => {
   const info = req.body;
   InfoModel.create(info)
     .then(doc => res.json(doc.toObject()))
@@ -39,7 +41,7 @@ router.post('/', (req, res, next) => {
 /* PUT info
  *--> Update existing or create a new info document
  */
-router.put('/:name', (req, res, next) => {
+router.put('/:name', ensureAdmin(), (req, res, next) => {
   const info = req.body;
   InfoModel.findOneAndUpdate({ name: req.params.name }, info)
     .setOptions({ upsert: true, new: true })
@@ -55,7 +57,7 @@ router.put('/:name', (req, res, next) => {
 /* DELETE info
  *--> Delete an info document
  */
-router.delete('/:name', (req, res, next) => {
+router.delete('/:name', ensureAdmin(), (req, res, next) => {
   InfoModel.deleteOne({ name: req.params.name })
     .exec()
     .then(({ n }) => n ?
@@ -73,7 +75,7 @@ router.delete('/:name', (req, res, next) => {
     });
 });
 
-router.put('/:name/projects', (req, res, next) => {
+router.put('/:name/projects', ensureAdmin(), (req, res, next) => {
   const projectIds = req.body;
   InfoModel.findOneAndUpdate(
     { name: req.params.name },
@@ -89,7 +91,7 @@ router.put('/:name/projects', (req, res, next) => {
     });
 });
 
-router.delete('/:name/projects', (req, res, next) => {
+router.delete('/:name/projects', ensureAdmin(), (req, res, next) => {
   const projectIds = req.body;
   InfoModel.update(
     { name: req.params.name },
