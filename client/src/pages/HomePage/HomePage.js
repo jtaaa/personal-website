@@ -68,11 +68,15 @@ class HomePage extends Component {
           src="/assets/headshot.jpg"
           alt="Handsome headshot o.O" />
         <div className="HomePage-content">
-          <div 
-            className={ClassSet`HomePage-login ${this.state.hiddenButtonState}`}
-            onClick={this.onHiddenButtonPress.bind(this)}>
-            Hidden Login Button
-          </div>
+          { this.state.user._id ?
+              <div className="HomePage-user-widget">
+                <img className="HomePage-user-photo" src={this.state.user.photos[0]} alt="User photo"/>
+              </div>
+            : <div 
+                className={ClassSet`HomePage-login ${this.state.hiddenButtonState}`}
+                onClick={this.onHiddenButtonPress.bind(this)}>
+                Hidden Login Button
+              </div> }
           <div className="HomePage-title">Joshua Allum</div>
           <div className="HomePage-subtitle">Software Developer</div>
           <div className="HomePage-description">
