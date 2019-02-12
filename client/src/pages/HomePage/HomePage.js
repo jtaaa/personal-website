@@ -18,8 +18,7 @@ class HomePage extends Component {
         this.setState({ splash })
       })
       .catch(err => {
-        console.log(err);
-        this.setState({ splash: err })
+        this.setState({ splash: err.toString() });
       });
   }
 
