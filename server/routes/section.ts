@@ -71,7 +71,7 @@ router.delete('/:name', ensureAdmin(), (req, res, next) => {
     });
 });
 
-router.put('/:name/sections', ensureAdmin(), (req, res, next) => {
+router.put('/:name/subsections', ensureAdmin(), (req, res, next) => {
   const subsectionIds = req.body;
   SectionModel.findOneAndUpdate(
     { name: req.params.name },
@@ -87,7 +87,7 @@ router.put('/:name/sections', ensureAdmin(), (req, res, next) => {
     });
 });
 
-router.delete('/:name/sections', ensureAdmin(), (req, res, next) => {
+router.delete('/:name/subsections', ensureAdmin(), (req, res, next) => {
   const subsectionIds = req.body;
   SectionModel.update(
     { name: req.params.name },
