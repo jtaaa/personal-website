@@ -2,15 +2,6 @@
     font-size: 0.875em;
 }
 
-.InfoPage-divider {
-    height: 0;
-    width: 0;
-    border-left: 50vw solid rgba(248, 248, 248, 0.5);
-    border-right: 50vw solid rgba(248, 248, 248, 0.5);
-    border-top: 30px solid transparent;
-    border-bottom: 30px solid rgba(248, 248, 248, 1);
-}
-
 .InfoPage-section {
     padding: 0 2em;
 }
