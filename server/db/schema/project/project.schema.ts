@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 
-import ProjectSectionSchema from './projectsection.schema';
+import { SectionModel } from './../../models/section.model';
 
 const ProjectSchema = new Schema({
   name: {
@@ -34,7 +34,15 @@ const ProjectSchema = new Schema({
     },
   },
   sections: {
-    type: [ ProjectSectionSchema ],
+    type: [{
+      type: Schema.Types.ObjectId,
+      ref: 'section',
+      validate: {
+        validator: async _id => SectionModel.count({ _id }, count => count > 0),
+        message: 'That\'s not a valid project id my dude',
+        type: 'ForeignKeyError',
+      },
+    }],
     default: [],
     required: true,
   }
