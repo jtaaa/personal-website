@@ -70,7 +70,11 @@ class HomePage extends Component {
           alt="Handsome headshot o.O" />
         <div className="HomePage-content">
           { this.state.user._id ?
-              <UserWidget {...this.state.user} />
+              <UserWidget {...this.state.user} 
+                prompts={[{
+                  title: 'Creator',
+                  href: '/creator',
+                }]} />
             : <div 
                 className={ClassSet`HomePage-login ${this.state.hiddenButtonState}`}
                 onClick={this.onHiddenButtonPress.bind(this)}>
