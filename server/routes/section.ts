@@ -1,17 +1,17 @@
 import * as express from 'express';
 
-import { ProjectModel, SectionModel } from './../db';
+import { SectionModel } from './../db';
 import { ensureAdmin } from './../auth';
 
-import { oneLine } from './../utils/templateLiteralTags';
+import { oneLine } from 'utils/templateLiteralTags';
 
 const router = express.Router();
 
-/* GET project
- *--> Returns all project documents in an array
+/* GET section
+ *--> Returns all section documents in an array
  */
 router.get('/', (req, res, next) => {
-  ProjectModel.find({})
+  SectionModel.find({})
     .lean()
     .exec()
     .then(projects => res.json(projects))
@@ -21,12 +21,12 @@ router.get('/', (req, res, next) => {
     });
 });
 
-/* POST project
- *--> Create a new project document
+/* POST section
+ *--> Create a new section document
  */
 router.post('/', ensureAdmin(), (req, res, next) => {
   const project = req.body;
-  ProjectModel.create(project)
+  SectionModel.create(project)
     .then(doc => res.json(doc.toObject()))
     .catch(err => {
       console.error(err);
@@ -34,12 +34,12 @@ router.post('/', ensureAdmin(), (req, res, next) => {
     });
 });
 
-/* PUT project
- *--> Update existing or create a new project document
+/* PUT section
+ *--> Update existing or create a new section document
  */
 router.put('/:name', ensureAdmin(), (req, res, next) => {
   const project = req.body;
-  ProjectModel.findOneAndUpdate({ name: req.params.name }, project)
+  SectionModel.findOneAndUpdate({ name: req.params.name }, project)
     .setOptions({ upsert: true, new: true })
     .lean()
     .exec()
@@ -50,11 +50,11 @@ router.put('/:name', ensureAdmin(), (req, res, next) => {
     });
 });
 
-/* DELETE project
- *--> Delete an project document
+/* DELETE section
+ *--> Delete a section document
  */
 router.delete('/:name', ensureAdmin(), (req, res, next) => {
-  ProjectModel.deleteOne({ name: req.params.name })
+  SectionModel.deleteOne({ name: req.params.name })
     .exec()
     .then(({ n }) => n ?
         res.json({
@@ -71,11 +71,11 @@ router.delete('/:name', ensureAdmin(), (req, res, next) => {
     });
 });
 
-router.put('/:name/sections', ensureAdmin(), (req, res, next) => {
-  const sectionIds = req.body;
-  ProjectModel.findOneAndUpdate(
+router.put('/:name/subsections', ensureAdmin(), (req, res, next) => {
+  const subsectionIds = req.body;
+  SectionModel.findOneAndUpdate(
     { name: req.params.name },
-    { $addToSet: { sections: { $each: sectionIds } } },
+    { $addToSet: { sections: { $each: subsectionIds } } },
   )
     .setOptions({ new: true, runValidators: true })
     .lean()
@@ -87,11 +87,11 @@ router.put('/:name/sections', ensureAdmin(), (req, res, next) => {
     });
 });
 
-router.delete('/:name/sections', ensureAdmin(), (req, res, next) => {
-  const sectionIds = req.body;
-  ProjectModel.update(
+router.delete('/:name/subsections', ensureAdmin(), (req, res, next) => {
+  const subsectionIds = req.body;
+  SectionModel.update(
     { name: req.params.name },
-    { $pullAll: { sections: sectionIds }}
+    { $pullAll: { sections: subsectionIds }}
   )
     .exec()
     .then(({ n, nModified }) => {
