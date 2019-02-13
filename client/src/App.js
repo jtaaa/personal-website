@@ -5,6 +5,7 @@ import './App.css';
 import HomePage from './pages/HomePage/HomePage';
 import Header from './components/Header/Header';
 import InfoPage from './pages/InfoPage/InfoPage';
+import CreatorPage from './pages/CreatorPage/CreatorPage';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
                 <InfoPage location={props.location}></InfoPage>
               </div>
             )}></Route>
+            <Route path="/creator" component={CreatorPage}></Route>
             <Route path="/" component={HomePage}></Route>
           </Switch>
         </div>
