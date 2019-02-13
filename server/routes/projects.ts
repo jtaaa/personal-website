@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-import { ProjectModel, SectionModel } from './../db';
+import { ProjectModel } from './../db';
 import { ensureAdmin } from './../auth';
 
 import { oneLine } from './../utils/templateLiteralTags';
@@ -28,6 +28,32 @@ router.post('/', ensureAdmin(), (req, res, next) => {
   const project = req.body;
   ProjectModel.create(project)
     .then(doc => res.json(doc.toObject()))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+router.get('/:name', (req, res, next) => {
+  const query = ProjectModel.findOne({ name: req.params.name });
+  switch (req.query.populate) {
+    case 'true':
+    case  true :
+      query.populate({ path: 'sections', options: { lean: true } });
+    case 'all':
+      query.populate({
+        path: 'sections',
+        options: { lean: true },
+        populate: { path: 'subsections', options: { lean: true }}
+      });
+    default:
+  }
+  if (req.query.populate) {
+  }
+  query
+    .lean()
+    .exec()
+    .then(doc => res.json(doc))
     .catch(err => {
       console.error(err);
       next(err);
