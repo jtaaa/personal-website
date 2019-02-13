@@ -34,6 +34,21 @@ router.post('/', ensureAdmin(), (req, res, next) => {
     });
 });
 
+router.get('/:name', (req, res, next) => {
+  const query = SectionModel.findOne({ name: req.params.name });
+  if (req.query.populate) {
+    query.populate({ path: 'subsections', options: { lean: true } });
+  }
+  query
+    .lean()
+    .exec()
+    .then(doc => res.json(doc))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
 /* PUT section
  *--> Update existing or create a new section document
  */
