@@ -35,9 +35,9 @@ router.post('/', ensureAdmin(), (req, res, next) => {
 });
 
 router.get('/:name', (req, res, next) => {
-  const query = SectionModel.findOne({ name: req.params.name });
+  let query = SectionModel.findOne({ name: req.params.name });
   if (req.query.populate) {
-    query.populate({ path: 'subsections', options: { lean: true } });
+    query = query.populate({ path: 'subsections', options: { lean: true } });
   }
   query
     .lean()

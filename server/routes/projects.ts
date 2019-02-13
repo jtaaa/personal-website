@@ -35,13 +35,13 @@ router.post('/', ensureAdmin(), (req, res, next) => {
 });
 
 router.get('/:name', (req, res, next) => {
-  const query = ProjectModel.findOne({ name: req.params.name });
+  let query = ProjectModel.findOne({ name: req.params.name });
   switch (req.query.populate) {
     case 'true':
     case  true :
-      query.populate({ path: 'sections', options: { lean: true } });
+      query = query.populate({ path: 'sections', options: { lean: true } });
     case 'all':
-      query.populate({
+      query = query.populate({
         path: 'sections',
         options: { lean: true },
         populate: { path: 'subsections', options: { lean: true }}
