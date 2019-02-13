@@ -3,6 +3,8 @@ import * as express from 'express';
 import { SectionModel } from './../db';
 import { ensureAdmin } from './../auth';
 
+import { oneLine } from 'utils/templateLiteralTags';
+
 const router = express.Router();
 
 /* GET section
@@ -63,6 +65,51 @@ router.delete('/:name', ensureAdmin(), (req, res, next) => {
           message: 'Couldn\'t find a record with that name my bro.',
         })
     )
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+router.put('/:name/sections', ensureAdmin(), (req, res, next) => {
+  const subsectionIds = req.body;
+  SectionModel.findOneAndUpdate(
+    { name: req.params.name },
+    { $addToSet: { sections: { $each: subsectionIds } } },
+  )
+    .setOptions({ new: true, runValidators: true })
+    .lean()
+    .exec()
+    .then(doc => res.json(doc))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+router.delete('/:name/sections', ensureAdmin(), (req, res, next) => {
+  const subsectionIds = req.body;
+  SectionModel.update(
+    { name: req.params.name },
+    { $pullAll: { sections: subsectionIds }}
+  )
+    .exec()
+    .then(({ n, nModified }) => {
+      if (nModified) 
+        res.json({
+          message: 'Successfully deleted my bro!'
+        });
+      else if (n)
+        next({
+          statusCode: 404,
+          message: oneLine`Couldn\'t find any projects on the ${req.params.name}
+                           info doc with those ids my bro.`,
+        })
+      else next({
+        statusCode: 404,
+        message: 'Couldn\'t find a project with that name my bro.',
+      });
+    })
     .catch(err => {
       console.error(err);
       next(err);
