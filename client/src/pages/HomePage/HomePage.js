@@ -72,6 +72,7 @@ class HomePage extends Component {
           { this.state.user._id ?
               <UserWidget {...this.state.user} 
                 prompts={[{
+                  name: 'creator',
                   title: 'Creator',
                   href: '/creator',
                 }]} />
