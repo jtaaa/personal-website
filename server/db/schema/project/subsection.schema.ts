@@ -9,14 +9,6 @@ const ProjectSubSectionSchema = new Schema({
   },
   type: {
     type: String,
-    enum: [
-      'paragraph',
-      'breakdown',
-      'rundown',
-      'summary',
-      'breakdown of de rundown',
-      'summary of de breakdown of the rundown',
-    ],
     required: true,
   },
   contents: {
