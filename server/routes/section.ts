@@ -1,0 +1,72 @@
+import * as express from 'express';
+
+import { SectionModel } from './../db';
+import { ensureAdmin } from './../auth';
+
+const router = express.Router();
+
+/* GET section
+ *--> Returns all section documents in an array
+ */
+router.get('/', (req, res, next) => {
+  SectionModel.find({})
+    .lean()
+    .exec()
+    .then(projects => res.json(projects))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+/* POST section
+ *--> Create a new section document
+ */
+router.post('/', ensureAdmin(), (req, res, next) => {
+  const project = req.body;
+  SectionModel.create(project)
+    .then(doc => res.json(doc.toObject()))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+/* PUT section
+ *--> Update existing or create a new section document
+ */
+router.put('/:name', ensureAdmin(), (req, res, next) => {
+  const project = req.body;
+  SectionModel.findOneAndUpdate({ name: req.params.name }, project)
+    .setOptions({ upsert: true, new: true })
+    .lean()
+    .exec()
+    .then(doc => res.json(doc))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+/* DELETE section
+ *--> Delete a section document
+ */
+router.delete('/:name', ensureAdmin(), (req, res, next) => {
+  SectionModel.deleteOne({ name: req.params.name })
+    .exec()
+    .then(({ n }) => n ?
+        res.json({
+          message: 'Successfully deleted my bro!'
+        })
+      : next({
+          statusCode: 404,
+          message: 'Couldn\'t find a record with that name my bro.',
+        })
+    )
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
+export default router;
