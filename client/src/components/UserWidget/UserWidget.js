@@ -1,22 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './UserWidget.css';
 
-class UserWidget extends Component {
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-
-    };
-  }
-
-  render() {
-    return (
-      <div className="UserWidget">
-        <img className="UserWidget-photo" src={this.props.photos[0]} alt="User profile"/>
-      </div>
-    );
-  }
-}
+const UserWidget = ({ photos }) => (
+  <div className="UserWidget">
+    <div className="UserWidget-prompt-wrapper">
+      <Link to="/creator" className="UserWidget-prompt">Creator</Link>
+    </div>
+    <div className="UserWidget-bubble">
+      <img className="UserWidget-photo" src={photos[0]} alt="User profile"/>
+    </div>
+  </div>
+);
 
 export default UserWidget;
