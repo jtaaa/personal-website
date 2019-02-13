@@ -13,7 +13,7 @@ class InfoPage extends Component {
         <div className="InfoPage-section">
           { info && <GeneralInfo {...info.generalInfo} /> }
         </div>
-        <div className="InfoPage-divider"></div>
+        <div className="Page-divider"></div>
         <div className="InfoPage-projects">
           <div className="InfoPage-header">Projects</div>
           { info.projectsInfo.map(projectInfo => (
