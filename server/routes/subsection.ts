@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-import { ProjectModel } from './../db';
+import { SubsectionModel } from './../db';
 import { ensureAdmin } from './../auth';
 
 const router = express.Router();
@@ -9,7 +9,7 @@ const router = express.Router();
  *--> Returns all subsection documents in an array
  */
 router.get('/', (req, res, next) => {
-  ProjectModel.find({})
+  SubsectionModel.find({})
     .lean()
     .exec()
     .then(projects => res.json(projects))
@@ -24,7 +24,7 @@ router.get('/', (req, res, next) => {
  */
 router.post('/', ensureAdmin(), (req, res, next) => {
   const project = req.body;
-  ProjectModel.create(project)
+  SubsectionModel.create(project)
     .then(doc => res.json(doc.toObject()))
     .catch(err => {
       console.error(err);
@@ -37,7 +37,7 @@ router.post('/', ensureAdmin(), (req, res, next) => {
  */
 router.put('/:name', ensureAdmin(), (req, res, next) => {
   const project = req.body;
-  ProjectModel.findOneAndUpdate({ name: req.params.name }, project)
+  SubsectionModel.findOneAndUpdate({ name: req.params.name }, project)
     .setOptions({ upsert: true, new: true })
     .lean()
     .exec()
@@ -52,7 +52,7 @@ router.put('/:name', ensureAdmin(), (req, res, next) => {
  *--> Delete a subsection document
  */
 router.delete('/:name', ensureAdmin(), (req, res, next) => {
-  ProjectModel.deleteOne({ name: req.params.name })
+  SubsectionModel.deleteOne({ name: req.params.name })
     .exec()
     .then(({ n }) => n ?
         res.json({
