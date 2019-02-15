@@ -20,6 +20,8 @@ const ProjectSubSectionSchema = new Schema({
       alt: { type: String, required: true },
     },
   },
+  title: String,
+  fetch_uri: String,
 });
 
 export default ProjectSubSectionSchema;
