@@ -3,7 +3,7 @@ import * as express from 'express';
 import { SectionModel } from './../db';
 import { ensureAdmin } from './../auth';
 
-import { oneLine } from 'utils/templateLiteralTags';
+import { oneLine } from './../utils/templateLiteralTags';
 
 const router = express.Router();
 
@@ -90,7 +90,7 @@ router.put('/:name/subsections', ensureAdmin(), (req, res, next) => {
   const subsectionIds = req.body;
   SectionModel.findOneAndUpdate(
     { name: req.params.name },
-    { $addToSet: { sections: { $each: subsectionIds } } },
+    { $addToSet: { subsections: { $each: subsectionIds } } },
   )
     .setOptions({ new: true, runValidators: true })
     .lean()
