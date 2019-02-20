@@ -40,8 +40,9 @@ class EditProject extends Component {
     this.getProject();
   }
 
-  handleSubmit() {
-
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log('submitted!');
   }
 
   getChangeHandler(field) {
@@ -150,6 +151,9 @@ class EditProject extends Component {
                 onChange={this.getChangeHandler('newTag')}
                 onKeyPress={this.handleKeyPress('tag')} />
             </div>
+          </div>
+          <div className="EditProject-menu">
+            <button type="submit" className="EditProject-save">save</button>
           </div>
         </form>
       </div>

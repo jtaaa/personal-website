@@ -65,3 +65,18 @@
   padding-left: 0.35em;
   border-left: 1px solid #747474;
 }
+
+.EditProject-menu {
+  padding-top: 0.5em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.EditProject-save {
+  cursor: pointer;
+  color: #747474;
+  font-family: unset;
+  padding: 0.5em 1em;
+  background-color: #fafdfa;
+  border: none;
+}
