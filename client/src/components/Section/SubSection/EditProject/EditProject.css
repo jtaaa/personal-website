@@ -61,6 +61,7 @@
 }
 
 .EditProject-input-li-delete {
+  cursor: pointer;
   padding-left: 0.35em;
   border-left: 1px solid #747474;
 }
