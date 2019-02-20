@@ -19,6 +19,7 @@ class EditProject extends Component {
     };
 
     this.getChangeHandler = this.getChangeHandler.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getProject() {
@@ -42,7 +43,22 @@ class EditProject extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('submitted!');
+    fetch(`/api/project/${this.props.name}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(this.state),
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw Error(`It seems I couldn't save the ${this.props.name} project.`);
+        }
+        return res.json();
+      })
+      .then(project => this.setState(project))
+      .catch(err => process.env.REACT_APP_ENV === 'development' || err.message === undefined ?
+          console.error(err)
+        : console.log(err.message)
+      );
   }
 
   getChangeHandler(field) {
