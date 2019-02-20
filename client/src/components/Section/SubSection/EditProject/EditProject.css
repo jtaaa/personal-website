@@ -1,0 +1,66 @@
+.EditProject-header {
+  padding: 0.25em 0;
+}
+
+.EditProject-li {
+  color: #747474;
+  font-size: 0.65em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.EditProject-li-value {
+  letter-spacing: 0.5px;
+}
+
+.EditProject-fieldset {
+  padding: 0.25em 0;
+}
+
+.EditProject-fieldset-label {
+  color: #747474;
+  font-size: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+.EditProject-field {
+  padding: 0.25em 0;
+  display: flex;
+  align-items: center;
+}
+
+.EditProject-label {
+  font-size: 0.85em;
+  margin-right: 0.5em;
+}
+
+.EditProject-input {
+  display: block;
+  flex: 1;
+  border: none;
+  border-bottom: dashed 1px #747474;
+}
+
+.EditProject-input-list {
+  font-size: 0.65em;
+  padding: 0.25em 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.EditProject-input-li {
+  display: flex;
+  padding: 0.25em 0.5em;
+  margin-right: 0.35em;
+  margin-bottom: 0.15em;
+  background-color: aliceblue;
+}
+
+.EditProject-input-li-value {
+  margin-right: 0.35em;
+}
+
+.EditProject-input-li-delete {
+  padding-left: 0.35em;
+  border-left: 1px solid #747474;
+}
