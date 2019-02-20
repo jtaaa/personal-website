@@ -68,6 +68,10 @@ class EditProject extends Component {
       }
     }
   }
+
+  removeTag(remTag) {
+    this.setState(state => ({ tags: state.tags.filter(tag => tag !== remTag) }));
+  }
   
   render() {
     return (
@@ -134,7 +138,7 @@ class EditProject extends Component {
               { this.state.tags.map(tag => (
               <div key={tag} className="EditProject-input-li">
                 <div className="EditProject-input-li-value">{ tag }</div>
-                <div className="EditProject-input-li-delete">x</div>
+                <div className="EditProject-input-li-delete" onClick={() => this.removeTag(tag)}>x</div>
               </div> ))}
             </div>
             <div className="EditProject-field">
