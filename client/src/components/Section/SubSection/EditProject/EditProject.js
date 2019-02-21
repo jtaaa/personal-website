@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './EditProject.css';
 
+import { ClassSet } from './../../../../utils/templateLiteralTags';
+
 class EditProject extends Component {
   constructor(props) {
     super(props);
   
     this.state = {
       newTag: '',
+      dirty: { tags: {} },
       _id: '',
       name: '',            // don't forget empty strings are falsey o.0
       title: '',
@@ -20,6 +23,7 @@ class EditProject extends Component {
 
     this.getChangeHandler = this.getChangeHandler.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.isDirty = this.isDirty.bind(this);
   }
 
   getProject() {
@@ -43,42 +47,64 @@ class EditProject extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    fetch(`/api/project/${this.props.name}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.state),
-    })
-      .then(res => {
-        if (!res.ok) {
-          throw Error(`It seems I couldn't save the ${this.props.name} project.`);
-        }
-        return res.json();
+    if (this.isDirty()) {
+      fetch(`/api/project/${this.props.name}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.state),
       })
-      .then(project => this.setState(project))
-      .catch(err => process.env.REACT_APP_ENV === 'development' || err.message === undefined ?
-          console.error(err)
-        : console.log(err.message)
-      );
+        .then(res => {
+          if (!res.ok) {
+            throw Error(`It seems I couldn't save the ${this.props.name} project.`);
+          }
+          return res.json();
+        })
+        .then(project => this.setState({ ...project, dirty: { tags: {} } }))
+        .catch(err => process.env.REACT_APP_ENV === 'development' || err.message === undefined ?
+            console.error(err)
+          : console.log(err.message)
+        );
+    }
   }
 
   getChangeHandler(field) {
     return event => {
       const { target: { value } } = event;
       if (field === 'logo src') {
-        return this.setState(state => ({ logo: { src: value, alt: state.logo.alt } }));
+        return this.setState(state => ({
+          logo: { src: value, alt: state.logo.alt },
+          dirty: { ...state.dirty, logoSrc: !this.props.logo || value !== this.props.logo.src },
+        }));
       } else if (field === 'logo alt') {
-        return this.setState(state => ({ logo: { src: state.logo.src, alt: value } }));
+        return this.setState(state => ({
+          logo: { src: state.logo.src,alt: value },
+          dirty: { ...state.dirty, logoAlt: !this.props.logo || value !== this.props.logo.alt },
+        }));
       } else if (field === 'tag') {
-        return this.setState(state => ({ tags: [ ...state.tags, value ] }));
+        return this.setState(state => ({
+          tags: [ ...state.tags, value ],
+          dirty: { ...state.dirty, tags: state.dirty.tags ?
+              { ...state.dirty.tags, [value]: !this.props.tags.includes(value) }
+            : { [value]: !this.props.tags.includes(value) } },
+        }));
+      } else if (field === 'newTag') {
+        return this.setState({ [field]: value });
       }
-      return this.setState({ [field]: value });
+      return this.setState(state => ({
+        [field]: value,
+        dirty: { ...state.dirty, [field]: this.props[field] !== value },
+      }));
     }
   }
 
   handleKeyPress(field) {
     return event => {
-      const { key } = event;
+      console.log('object');
+      const { key, target } = event;
       if (key === 'Enter') {
+        if (target.name === 'tags') {
+          event.preventDefault();
+        }
         const handler = this.getChangeHandler(field);
         handler(event);
         this.setState({ newTag: '' });
@@ -87,7 +113,14 @@ class EditProject extends Component {
   }
 
   removeTag(remTag) {
-    this.setState(state => ({ tags: state.tags.filter(tag => tag !== remTag) }));
+    this.setState(state => ({
+      tags: state.tags.filter(tag => tag !== remTag),
+      dirty: { ...state.dirty, tags: { ...state.tags, [remTag]: true } },
+    }));
+  }
+
+  isDirty() {
+    return Object.values(this.state.dirty).includes(true) || Object.values(this.state.dirty.tags).includes(true);
   }
   
   render() {
@@ -111,7 +144,7 @@ class EditProject extends Component {
             <input
               type="text"
               value={this.state.title}
-              className="EditProject-input"
+              className={ClassSet`EditProject-input ${this.state.dirty.title ? 'dirty' : ''}`}
               onChange={this.getChangeHandler('title')} />
           </div>
           <div className="EditProject-field">
@@ -119,7 +152,7 @@ class EditProject extends Component {
             <textarea
               rows={3}
               value={this.state.description}
-              className="EditProject-input"
+              className={ClassSet`EditProject-input ${this.state.dirty.description ? 'dirty' : ''}`}
               onChange={this.getChangeHandler('description')} />
           </div>
           <div className="EditProject-field">
@@ -127,7 +160,7 @@ class EditProject extends Component {
             <input
               type="text"
               value={this.state.href}
-              className="EditProject-input"
+              className={ClassSet`EditProject-input ${this.state.dirty.href ? 'dirty' : ''}`}
               onChange={this.getChangeHandler('href')} />
           </div>
           <div className="EditProject-fieldset">
@@ -137,7 +170,7 @@ class EditProject extends Component {
               <input
                 type="text"
                 value={this.state.logo.src}
-                className="EditProject-input"
+                className={ClassSet`EditProject-input ${this.state.dirty.logoSrc ? 'dirty' : ''}`}
                 onChange={this.getChangeHandler('logo src')} />
             </div>
             <div className="EditProject-field">
@@ -145,7 +178,7 @@ class EditProject extends Component {
               <input
                 type="text"
                 value={this.state.logo.alt}
-                className="EditProject-input"
+                className={ClassSet`EditProject-input ${this.state.dirty.logoAlt ? 'dirty' : ''}`}
                 onChange={this.getChangeHandler('logo alt')} />
             </div>
           </div>
@@ -153,7 +186,7 @@ class EditProject extends Component {
             <div className="EditProject-fieldset-label">tags:</div>
             <div className="EditProject-input-list">
               { this.state.tags.map(tag => (
-              <div key={tag} className="EditProject-input-li">
+              <div key={tag} className={ClassSet`EditProject-input-li ${this.state.dirty.tags[tag] ? 'dirty' : ''}`}>
                 <div className="EditProject-input-li-value">{ tag }</div>
                 <div className="EditProject-input-li-delete" onClick={() => this.removeTag(tag)}>x</div>
               </div> ))}
@@ -162,6 +195,7 @@ class EditProject extends Component {
               <label className="EditProject-label">add:</label>
               <input
                 type="text"
+                name="tags"
                 value={this.state.newTag}
                 className="EditProject-input"
                 onChange={this.getChangeHandler('newTag')}
@@ -169,7 +203,7 @@ class EditProject extends Component {
             </div>
           </div>
           <div className="EditProject-menu">
-            <button type="submit" className="EditProject-save">save</button>
+            <button type="submit" className="EditProject-save">save{ !this.isDirty() ? 'd' : null }</button>
           </div>
         </form>
       </div>

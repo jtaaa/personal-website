@@ -39,6 +39,11 @@
   flex: 1;
   border: none;
   border-bottom: dashed 1px #747474;
+  transition: border-bottom-color 200ms linear;
+}
+
+.EditProject-input-dirty {
+  border-bottom-color: #33a3ff;
 }
 
 .EditProject-input-list {
@@ -53,9 +58,12 @@
   padding: 0.25em 0.5em;
   margin-right: 0.35em;
   margin-bottom: 0.15em;
-  background-color: aliceblue;
+  background-color: #f0f8ff;
 }
 
+.EditProject-input-li-dirty {
+  background-color: #f0fffc;
+}
 .EditProject-input-li-value {
   margin-right: 0.35em;
 }
