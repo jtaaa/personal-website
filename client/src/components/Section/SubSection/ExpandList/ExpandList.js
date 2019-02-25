@@ -10,6 +10,7 @@ class ExpandList extends Component {
     this.state = {
        items: [],
        openItems: new Set(),
+       itemType: this.props.itemType || 'item',
     };
   }
 
@@ -43,6 +44,13 @@ class ExpandList extends Component {
   render() {
     return (
       <div className="ExpandList">
+        { this.props.new &&
+        <div className="ExpandList-item">
+          <div className="ExpandList-item-title" onClick={() => this.toggleItem('new')}>Create a New {this.state.itemType.charAt(0).toUpperCase() + this.state.itemType.slice(1)}</div>
+          <div className="ExpandList-item-description">Expand this card to add a new {this.state.itemType}.</div>
+          { this.state.openItems.has('new') &&
+          <EditProject new={true} /> }
+        </div> }
         { this.state.items.map(item => (
         <div key={item.name} className="ExpandList-item">
           <div className="ExpandList-item-title" onClick={() => this.toggleItem(item._id)}>{ item.title }</div>
