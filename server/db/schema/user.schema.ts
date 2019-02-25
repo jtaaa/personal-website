@@ -2,7 +2,7 @@ import { Schema } from 'mongoose';
 
 const UserSchema = new Schema({
   googleId: {
-    type: Number,
+    type: String,
     index: true,
     unique: true,
     required: true,
