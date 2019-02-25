@@ -15,7 +15,7 @@ passport.use(new GoogleStategy(
       { googleId: profile.id },
       {  ...profile, googleId: profile.id, photos: [ profile.photos[0].value ] },
     )
-      .setOptions({ upsert: true, new: true, setDefaultsOnInsert: true })
+      .setOptions({ upsert: true, new: true, setDefaultsOnInsert: true, runValidators: true })
       .lean()
       .exec()
       .then(doc => done(null, doc))
