@@ -24,6 +24,8 @@ class SubSection extends Component {
         );
       case 'expand-list':
         return (<ExpandList {...this.props} />);
+      case 'create-expand-list':
+        return (<ExpandList new={true} {...this.props} />);
       default:
         return null;
     }
