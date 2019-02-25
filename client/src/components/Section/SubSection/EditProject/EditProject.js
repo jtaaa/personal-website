@@ -10,7 +10,6 @@ class EditProject extends Component {
     this.state = {
       newTag: '',
       dirty: { tags: {} },
-      _id: '',
       name: '',            // don't forget empty strings are falsey o.0
       title: '',
       description: '',
@@ -126,6 +125,7 @@ class EditProject extends Component {
   render() {
     return (
       <div className="EditProject">
+        { !this.props.new &&
         <div className="EditProject-header">
           <div className="EditProject-list">
             <div className="EditProject-li">
@@ -137,8 +137,16 @@ class EditProject extends Component {
               <div className="EditProject-li-value">{ this.state.name }</div>
             </div>
           </div>
-        </div>
+        </div> }
         <form onSubmit={this.handleSubmit} className="EditProject-form">
+          <div className="EditProject-field">
+            <label className="EditProject-label">name:</label>
+            <input
+              type="text"
+              value={this.state.name}
+              className={ClassSet`EditProject-input ${this.state.dirty.name ? 'dirty' : ''}`}
+              onChange={this.getChangeHandler('name')} />
+          </div>
           <div className="EditProject-field">
             <label className="EditProject-label">title:</label>
             <input
