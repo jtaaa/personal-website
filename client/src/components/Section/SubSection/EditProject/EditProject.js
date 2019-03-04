@@ -9,7 +9,9 @@ class EditProject extends Component {
   
     this.state = {
       newTag: '',
-      dirty: { tags: {} },
+      newSectionName: '',
+      newSectionTitle: '',
+      dirty: { tags: {}, sections: [] },
       name: '',            // don't forget empty strings are falsey o.0
       title: '',
       description: '',
@@ -26,7 +28,7 @@ class EditProject extends Component {
   }
 
   getProject() {
-    fetch(`/api/project/${this.props.name}`)
+    fetch(`/api/project/${this.props.name}?populate=all`)
       .then(res => {
         if (!res.ok) {
           throw Error(`It seems I couldn't find the ${this.props.name} project.`);
@@ -58,7 +60,7 @@ class EditProject extends Component {
           }
           return res.json();
         })
-        .then(project => this.setState({ ...project, dirty: { tags: {} } }))
+        .then(project => this.setState({ ...project, dirty: { tags: {}, sections: {} } }))
         .catch(err => process.env.REACT_APP_ENV === 'development' || err.message === undefined ?
             console.error(err)
           : console.log(err.message)
@@ -82,31 +84,71 @@ class EditProject extends Component {
       } else if (field === 'tag') {
         return this.setState(state => ({
           tags: [ ...state.tags, value ],
-          dirty: { ...state.dirty, tags: state.dirty.tags ?
+          dirty: { ...state.dirty, tags: this.props.tags ?
               { ...state.dirty.tags, [value]: !this.props.tags.includes(value) }
-            : { [value]: !this.props.tags.includes(value) } },
+            : { ...state.dirty.tags, [value]: true }
+          },
         }));
+      } else if (field === 'sections') {
+        if (this.state.newSectionName && this.state.newSectionTitle) {
+          return fetch(`/api/section/${this.state.newSectionName}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: this.state.newSectionName,
+              title: this.state.newSectionTitle,
+            }),
+          })
+            .then(res => {
+              if (!res.ok) {
+                throw Error(`It seems I couldn't create the ${this.state.newSectionName} section.`);
+              }
+              return res.json();
+            })
+            .then(section => fetch(`/api/project/${this.state.name}/sections`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify([ section._id ]),
+            })
+              .then(res => {
+                if (!res.ok) {
+                  throw Error(`It seems I couldn't save the ${this.state.newSectionName} section to the ${this.state.name} project.`);
+                }
+                res.json().then(project => this.setState(state => ({ 
+                  ...project,
+                  sections: [ ...state.sections, section ],
+                  dirty: {
+                    ...state.dirty,
+                    sections: { ...state.dirty.sections, [state.newSectionName]: true }
+                }})));
+              }))
+            .catch(err => process.env.REACT_APP_ENV === 'development' || err.message === undefined ?
+                console.error(err)
+              : console.log(err.message)
+            );
+        }
       } else if (field === 'newTag') {
         return this.setState({ [field]: value });
+      } else {
+        return this.setState(state => ({
+          [field]: value,
+          dirty: { ...state.dirty, [field]: this.props[field] !== value },
+        }));
       }
-      return this.setState(state => ({
-        [field]: value,
-        dirty: { ...state.dirty, [field]: this.props[field] !== value },
-      }));
     }
   }
 
   handleKeyPress(field) {
     return event => {
-      console.log('object');
       const { key, target } = event;
       if (key === 'Enter') {
-        if (target.name === 'tags') {
+        if (target.name === 'tags' ||
+            field === 'sections') {
           event.preventDefault();
         }
         const handler = this.getChangeHandler(field);
         handler(event);
-        this.setState({ newTag: '' });
+        this.setState({ newTag: '', newSectionName: '', newSectionTitle: '' });
       }
     }
   }
@@ -209,6 +251,57 @@ class EditProject extends Component {
                 onChange={this.getChangeHandler('newTag')}
                 onKeyPress={this.handleKeyPress('tag')} />
             </div>
+          </div>
+          <div className="EditProject-fieldset">
+            <div className="EditProject-fieldset-label">sections:</div>
+            { this.state.sections.map(section => (
+            <div key={section._id ? section._id : section}>
+              { !this.props.new &&
+              <div className="EditProject-header">
+                <div className="EditProject-list">
+                  <div className="EditProject-li">
+                    <div className="EditProject-li-label">id:</div>
+                    <div className="EditProject-li-value">{ section._id }</div>
+                  </div>
+                  <div className="EditProject-li">
+                    <div className="EditProject-li-label">name:</div>
+                    <div className="EditProject-li-value">{ section.name }</div>
+                  </div>
+                </div>
+              </div> }
+              <div className="EditProject-field">
+                <label className="EditProject-label">title</label>
+                <input
+                  type="text"
+                  name="section title"
+                  value={section.title ? section.title : section}
+                  className="EditProject-input"
+                  onChange={this.getChangeHandler('section title')} />
+              </div>
+            </div> )) }
+          </div>
+          <div className="EditProject-fieldset">
+            <div className="EditProject-fieldset-label">add section:</div>
+              <div className="EditProject-field">
+                <label className="EditProject-label">name</label>
+                <input
+                  type="text"
+                  name="add section name"
+                  value={this.state.newSectionName}
+                  className="EditProject-input"
+                  onChange={this.getChangeHandler('newSectionName')} 
+                  onKeyPress={this.handleKeyPress('sections')} />
+              </div>
+              <div className="EditProject-field">
+                <label className="EditProject-label">title</label>
+                <input
+                  type="text"
+                  name="add section title"
+                  value={this.state.newSectionTitle}
+                  className="EditProject-input"
+                  onChange={this.getChangeHandler('newSectionTitle')} 
+                  onKeyPress={this.handleKeyPress('sections')} />
+              </div>
           </div>
           <div className="EditProject-menu">
             <button type="submit" className="EditProject-save">save{ !this.isDirty() ? 'd' : null }</button>

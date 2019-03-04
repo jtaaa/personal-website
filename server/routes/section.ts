@@ -55,7 +55,7 @@ router.get('/:name', (req, res, next) => {
 router.put('/:name', ensureAdmin(), (req, res, next) => {
   const project = req.body;
   SectionModel.findOneAndUpdate({ name: req.params.name }, project)
-    .setOptions({ upsert: true, new: true })
+    .setOptions({ upsert: true, new: true, setDefaultsOnInsert: true, runValidators: true })
     .lean()
     .exec()
     .then(doc => res.json(doc))
