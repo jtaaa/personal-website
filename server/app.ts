@@ -11,6 +11,7 @@ import splashRouter from './routes/splash';
 import infoRouter from './routes/info';
 import projectsRouter from './routes/projects';
 import userRouter from './routes/user';
+import logRouter from './routes/log';
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use('/api/splash', splashRouter);
 app.use('/api/info', infoRouter);
 app.use('/api/project', projectsRouter);
 app.use('/api/user', userRouter);
+app.use('/api/log', logRouter);
 
 // Production react frontend serving
 if (process.env.NODE_ENV === 'production') {
