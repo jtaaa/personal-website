@@ -6,6 +6,7 @@ import LinkList from '../../components/LinkList/LinkList';
 import linkGroups from '../../Links';
 
 import { ClassSet } from '../../utils/templateLiteralTags';
+import UserWidget from '../../components/UserWidget/UserWidget';
 
 class HomePage extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class HomePage extends Component {
       case 'hidden':  return this.setState({ hiddenButtonState: 'shown' });
       case 'shown':
       default:        this.setState({ hiddenButtonState: 'hidden' });
-                      this.props.history.push('/api/auth/google');
+                      window.location.href = '/api/auth/google';
     }
   }
   
@@ -69,9 +70,12 @@ class HomePage extends Component {
           alt="Handsome headshot o.O" />
         <div className="HomePage-content">
           { this.state.user._id ?
-              <div className="HomePage-user-widget">
-                <img className="HomePage-user-photo" src={this.state.user.photos[0]} alt="User profile"/>
-              </div>
+              <UserWidget {...this.state.user} 
+                prompts={[{
+                  name: 'creator',
+                  title: 'Creator',
+                  href: '/creator',
+                }]} />
             : <div 
                 className={ClassSet`HomePage-login ${this.state.hiddenButtonState}`}
                 onClick={this.onHiddenButtonPress.bind(this)}>

@@ -75,33 +75,6 @@
   opacity: 1;
 }
 
-.HomePage-user-widget {
-  height: 3em;
-  width: 3em;
-  position: absolute;
-  top: 12px;
-  right: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border: dashed 1px #a5a5a5;
-  border-radius: 50%;
-}
-@media only screen and (min-width: 1024px) {
-  .HomePage-user-widget {
-    top: 96px;
-    right: 0;
-  }
-}
-
-.HomePage-user-photo {
-  height: 2em;
-  width: 2em;
-  margin: 0 auto;
-  border: solid 3px #d7d7eb;
-  border-radius: 50%;
-}
-
 .HomePage-title {
   font-size: 3em;
 }

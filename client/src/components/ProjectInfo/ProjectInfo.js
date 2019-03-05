@@ -3,11 +3,12 @@ import './ProjectInfo.css';
 
 import Section from './../Section/Section';
 
-const ProjectInfo = ({ img, alt, title, titleLink, description, sections }) => (
+const ProjectInfo = ({ logo, title, href, description, sections }) => (
   <div className="ProjectInfo">
-    <img className="ProjectInfo-img" src={img} alt={alt} />
-    { titleLink
-    ? <a className="ProjectInfo-title" href={titleLink} target="_blank" rel="noopener noreferrer">{ title }</a>
+    { logo &&
+    <img className="ProjectInfo-img" src={logo.src} alt={logo.alt} /> }
+    { href
+    ? <a className="ProjectInfo-title" href={href} target="_blank" rel="noopener noreferrer">{ title }</a>
     : <div className="ProjectInfo-title">{ title }</div> }
     <div className="ProjectInfo-description">{ description }</div>
     { sections && sections.map(section => (

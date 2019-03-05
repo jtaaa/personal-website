@@ -1,0 +1,24 @@
+.CreatorPage {
+  height: 100vh;
+  width: 100%;
+}
+
+.CreatorPage-widget-wrapper {
+  position: absolute;
+  top: 1em;
+  right: 0;
+  left: 0;
+  height: 4em;
+}
+
+.CreatorPage-content-wrapper {
+  position: absolute;
+  top: 5em;
+  right: 0;
+  left: 0;
+}
+
+.CreatorPage-content {
+  padding: 0 1.5em;
+  background-color: #F8F8F8;
+}

@@ -12,6 +12,8 @@ import infoRouter from './routes/info';
 import projectsRouter from './routes/projects';
 import userRouter from './routes/user';
 import logRouter from './routes/log';
+import sectionRouter from './routes/section';
+import subsectionRouter from './routes/subsection';
 
 const app = express();
 
@@ -30,6 +32,8 @@ app.use('/api/info', infoRouter);
 app.use('/api/project', projectsRouter);
 app.use('/api/user', userRouter);
 app.use('/api/log', logRouter);
+app.use('/api/section', sectionRouter);
+app.use('/api/subsection', subsectionRouter);
 
 // Production react frontend serving
 if (process.env.NODE_ENV === 'production') {

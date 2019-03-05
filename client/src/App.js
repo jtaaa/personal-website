@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage/HomePage';
 import Header from './components/Header/Header';
 import InfoPage from './pages/InfoPage/InfoPage';
 import PlatformPage from './pages/PlatformPage/PlatformPage';
+import CreatorPage from './pages/CreatorPage/CreatorPage';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
               </div>
             )}></Route>
             <Route path="/platform" component={PlatformPage} />
+            <Route path="/creator" component={CreatorPage} />
             <Route path="/" component={HomePage} />
           </Switch>
         </div>

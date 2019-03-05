@@ -57,7 +57,7 @@ router.post('/', ensureAdmin(), function(req, res, next) {
 router.put('/:id', ensureAdmin(), (req, res, next) => {
   const info = req.body;
   SplashModel.findOneAndUpdate({ _id: req.params.id }, info)
-    .setOptions({ new: true })
+    .setOptions({ new: true, runValidators: true })
     .lean()
     .exec()
     .then(doc => doc ?

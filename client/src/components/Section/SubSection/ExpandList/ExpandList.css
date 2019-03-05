@@ -1,0 +1,19 @@
+.ExpandList {
+  text-align: left;
+}
+
+.ExpandList-item {
+  margin: 1em 0;
+  padding: 1em 1.5em;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.ExpandList-item-title {
+  cursor: pointer;
+  margin-bottom: 0.5em;
+}
+
+.ExpandList-item-description {
+  font-size: 0.7em;
+}

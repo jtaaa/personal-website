@@ -16,7 +16,7 @@ const SectionSchema = new Schema({
   subsections: {
     type: [{
       type: Schema.Types.ObjectId,
-      ref: 'section',
+      ref: 'subsection',
       validate: {
         validator: async _id => SubsectionModel.count({ _id }, count => count > 0),
         message: 'That\'s not a valid project id my dude',

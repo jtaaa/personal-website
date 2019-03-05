@@ -9,14 +9,6 @@ const ProjectSubSectionSchema = new Schema({
   },
   type: {
     type: String,
-    enum: [
-      'paragraph',
-      'breakdown',
-      'rundown',
-      'summary',
-      'breakdown of de rundown',
-      'summary of de breakdown of the rundown',
-    ],
     required: true,
   },
   contents: {
@@ -28,6 +20,8 @@ const ProjectSubSectionSchema = new Schema({
       alt: { type: String, required: true },
     },
   },
+  title: String,
+  fetch_uri: String,
 });
 
 export default ProjectSubSectionSchema;

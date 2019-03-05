@@ -3,7 +3,7 @@ import * as express from 'express';
 import { SectionModel } from './../db';
 import { ensureAdmin } from './../auth';
 
-import { oneLine } from 'utils/templateLiteralTags';
+import { oneLine } from './../utils/templateLiteralTags';
 
 const router = express.Router();
 
@@ -34,13 +34,28 @@ router.post('/', ensureAdmin(), (req, res, next) => {
     });
 });
 
+router.get('/:name', (req, res, next) => {
+  let query = SectionModel.findOne({ name: req.params.name });
+  if (req.query.populate) {
+    query = query.populate({ path: 'subsections', options: { lean: true } });
+  }
+  query
+    .lean()
+    .exec()
+    .then(doc => res.json(doc))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
 /* PUT section
  *--> Update existing or create a new section document
  */
 router.put('/:name', ensureAdmin(), (req, res, next) => {
   const project = req.body;
   SectionModel.findOneAndUpdate({ name: req.params.name }, project)
-    .setOptions({ upsert: true, new: true })
+    .setOptions({ upsert: true, new: true, setDefaultsOnInsert: true, runValidators: true })
     .lean()
     .exec()
     .then(doc => res.json(doc))
@@ -75,7 +90,7 @@ router.put('/:name/subsections', ensureAdmin(), (req, res, next) => {
   const subsectionIds = req.body;
   SectionModel.findOneAndUpdate(
     { name: req.params.name },
-    { $addToSet: { sections: { $each: subsectionIds } } },
+    { $addToSet: { subsections: { $each: subsectionIds } } },
   )
     .setOptions({ new: true, runValidators: true })
     .lean()
