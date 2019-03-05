@@ -5,6 +5,7 @@ import './App.css';
 import HomePage from './pages/HomePage/HomePage';
 import Header from './components/Header/Header';
 import InfoPage from './pages/InfoPage/InfoPage';
+import PlatformPage from './pages/PlatformPage/PlatformPage';
 
 class App extends Component {
   render() {
@@ -18,7 +19,8 @@ class App extends Component {
                 <InfoPage location={props.location}></InfoPage>
               </div>
             )}></Route>
-            <Route path="/" component={HomePage}></Route>
+            <Route path="/platform" component={PlatformPage} />
+            <Route path="/" component={HomePage} />
           </Switch>
         </div>
       </Router>
