@@ -1,0 +1,21 @@
+.Log {
+  margin: 0 1em;
+}
+
+.Log-item {
+  font-size: 0.8em;
+  margin: 0.25em 0;
+  display: flex;
+  align-items: center;
+}
+
+.Log-item-timestamp {
+  color: #6a6a6a;
+  font-size: 0.8em;
+  text-align: end;
+  width: 48px;
+}
+
+.Log-item-value {
+  flex-grow: 1;
+}
