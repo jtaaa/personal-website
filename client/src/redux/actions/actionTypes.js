@@ -1,4 +1,5 @@
 export const actionTypes = {
-  ADD_LOGITEM: 0,
-  SET_PROFILE: 1,
+  ADD_LOGITEMS: 0,
+  REFRESH_LOG: 1,
+  SET_PROFILE: 10,
 };

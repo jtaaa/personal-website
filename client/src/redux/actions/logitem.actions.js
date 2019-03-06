@@ -1,8 +1,8 @@
 import { actionTypes } from './actionTypes';
 
-export const addLogitem = logitem => ({
-  type: actionTypes.ADD_LOGITEM,
-  logitem,
+export const addLogitems = logitems => ({
+  type: actionTypes.ADD_LOGITEMS,
+  logitems,
 });
 
 export const createLogItem = input => dispatch => fetch('/api/log', {
@@ -11,10 +11,20 @@ export const createLogItem = input => dispatch => fetch('/api/log', {
   body: JSON.stringify({ input }),
 }).then(res => {
   if (!res.ok) {
-    throw new Error(`I couldn't create a logitem with input value "${input}".`)
+    throw new Error(`I couldn't create a logitem with input value "${input}".`);
   }
   return res.json().then(logitem => {
-    dispatch(addLogitem(logitem));
+    dispatch(addLogitems([ logitem ]));
     return logitem;
   });
 });
+
+export const refreshLog = () => dispatch => fetch('/api/log').then(res => {
+  if (!res.ok) {
+    throw new Error(`I couldn't get your log from the backend. Weird.`);
+  }
+  return res.json().then(log => {
+    dispatch(addLogitems(log));
+    return log;
+  });
+})
