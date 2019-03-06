@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { createLogItem } from './../../redux/actions';
 import InputBar from '../../components/InputBar/InputBar';
+import Log from '../../components/Log/Log';
+
+import { createLogItem, refreshLog } from './../../redux/actions';
 
 class PlatformPage extends Component {
   constructor(props) {
@@ -11,6 +13,10 @@ class PlatformPage extends Component {
     this.state = {
       partial: '',
     }
+  }
+
+  componentDidMount() {
+    this.props.refreshLog();
   }
 
   updatePartial(partial) {
@@ -23,6 +29,7 @@ class PlatformPage extends Component {
         <InputBar
           onChange={this.updatePartial.bind(this)}
           onSubmit={this.props.createLogItem} />
+        <Log log={this.props.log} />
       </div>
     );
   }
@@ -34,6 +41,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   createLogItem,
+  refreshLog,
 };
 
 export default connect(
