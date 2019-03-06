@@ -7,6 +7,6 @@ export const log = (state = defaultState, action) => {
     case actionTypes.ADD_LOGITEM:
       return [ ...state, action.logitem ];  
     default:
-      break;
+      return state;
   }
 }
