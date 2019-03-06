@@ -11,6 +11,7 @@ const router = express.Router();
 router.get('/', ensureAdmin(), (req, res, next) => {
   const limit = req.query.limit || 50;
   LogModel.find()
+    .sort('-timestamp')
     .setOptions({ limit })
     .lean()
     .exec()
