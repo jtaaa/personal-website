@@ -1,5 +1,5 @@
-const SET_PROFILE = 'SET_PROFILE';
+import { actionTypes } from './actionTypes';
 
-const setProfile = profile => ({ type: SET_PROFILE, profile });
+const setProfile = profile => ({ type: actionTypes.SET_PROFILE, profile });
 
-export { setProfile, SET_PROFILE };
+export { setProfile };
