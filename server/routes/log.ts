@@ -18,4 +18,17 @@ router.get('/', ensureAdmin(), (req, res, next) => {
     .catch(err => next(err));
 });
 
+/* PUT log
+ *--> Adds a new log item
+ */
+router.put('/', ensureAdmin(), (req, res, next) => {
+  const logitem = req.body;
+  LogModel.create(logitem)
+    .then(doc => res.json(doc.toObject()))
+    .catch(err => {
+      console.error(err);
+      next(err);
+    });
+});
+
 export default router;
