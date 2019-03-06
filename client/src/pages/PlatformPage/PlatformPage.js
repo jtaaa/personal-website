@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { addLogitem } from './../../redux/actions';
 
 class PlatformPage extends Component {
   render() {
@@ -10,4 +13,15 @@ class PlatformPage extends Component {
   }
 }
 
-export default PlatformPage;
+const mapStateToProps = state => ({
+  log: state.log
+});
+
+const mapDispatchToProps = {
+  addLogitem,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PlatformPage);
