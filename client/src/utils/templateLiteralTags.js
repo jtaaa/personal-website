@@ -6,7 +6,7 @@ const date = (strs, date) => (new Date(date)).toLocaleDateString();
 
 const time = (strs, time) => {
   const [ hms, suffix ] = (new Date(time)).toLocaleTimeString().split(' ');
-  const [ hours, minutes, seconds ] = hms.split(':');
+  const [ hours, minutes ] = hms.split(':');
   return `${hours}:${minutes}${suffix.toLowerCase()}`;
 }
 
