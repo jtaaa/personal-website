@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addLogitem } from './../../redux/actions';
+import { createLogItem } from './../../redux/actions';
 import InputBar from '../../components/InputBar/InputBar';
 
 class PlatformPage extends Component {
@@ -22,7 +22,7 @@ class PlatformPage extends Component {
       <div className="PlatformPage">
         <InputBar
           onChange={this.updatePartial.bind(this)}
-          onSubmit={this.props.addLogitem} />
+          onSubmit={this.props.createLogItem} />
       </div>
     );
   }
@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  addLogitem,
+  createLogItem,
 };
 
 export default connect(
