@@ -5,7 +5,7 @@ export const addLogitems = logitems => ({
   logitems,
 });
 
-export const createLogItem = input => dispatch => fetch('/api/log', {
+export const createLogItem = input => dispatch => fetch('/api/log?parse=true', {
   method: 'PUT',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ input }),
