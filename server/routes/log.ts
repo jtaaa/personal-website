@@ -2,6 +2,7 @@ import * as express from 'express';
 
 import { LogModel } from './../db';
 import { ensureAdmin } from './../auth';
+import { Parser } from './../utils/Parser';
 
 const router = express.Router();
 
@@ -23,7 +24,10 @@ router.get('/', ensureAdmin(), (req, res, next) => {
  *--> Adds a new log item
  */
 router.put('/', ensureAdmin(), (req, res, next) => {
-  const logitem = req.body;
+  let logitem = req.body;
+  if (req.query.parse) {
+    logitem.tags = Parser.getTags(logitem.input);
+  }
   LogModel.create(logitem)
     .then(doc => res.json(doc.toObject()))
     .catch(err => {
