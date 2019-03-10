@@ -4,7 +4,7 @@ import './Log.css';
 import { date, time } from './../../utils/templateLiteralTags';
 
 const DateEntry = timestamp => (
-  <div className="DateEntry">{ date`${timestamp}` }</div>
+  <div key={timestamp} className="DateEntry">{ date`${timestamp}` }</div>
 );
 
 const differentDay = (timestamp1, timestamp2) =>
