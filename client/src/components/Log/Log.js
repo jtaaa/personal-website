@@ -2,6 +2,7 @@ import React from 'react';
 import './Log.css';
 
 import { date, time } from './../../utils/templateLiteralTags';
+import { Renderer } from './../../utils/Renderer';
 
 const DateEntry = timestamp => (
   <div key={timestamp} className="DateEntry">{ date`${timestamp}` }</div>
@@ -13,7 +14,7 @@ const differentDay = (timestamp1, timestamp2) =>
 const Logitem = logitem => (
   <div key={logitem._id} className="Log-item">
     <div className="Log-item-timestamp">{ time`${logitem.timestamp}` }->&nbsp;</div>
-    <div className="Log-item-input">{ logitem.input }</div>
+    <div className="Log-item-input">{ Renderer.render(logitem.input, logitem.tags) }</div>
   </div>
 );
 
