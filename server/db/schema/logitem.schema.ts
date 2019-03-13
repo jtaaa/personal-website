@@ -30,10 +30,15 @@ const logitemSchema = new Schema({
         default: [],
         required: true,
       },
+      color: {
+        type: String,
+        default: 'none',
+        required: true,
+      },
     }],
     default: [],
     required: true,
-  }
+  },
 });
 
 export { logitemSchema };
