@@ -42,7 +42,7 @@ class Parser {
    * Parse and return tags in input with format #<tag>[@type.id, ...]
    * @param input input to be parsed
    */
-  static getTags(input: string): { tag: string, references: { type: string, ref: string }[] }[] {
+  static getTags(input: string, randomColors?: boolean): { tag: string, references: { type: string, ref: string }[] }[] {
     return input.split('#').slice(1).map(part => {
       const [ tag, rawReferences ] = part.split(' ', 1)[0].split('@');
       const references = rawReferences ? 
@@ -51,7 +51,10 @@ class Parser {
             return ({ type: type.toLowerCase(), ref });
             })
         : [];
-      return ({ tag: tag.replace(/\.|@|\?|!|/g, ''), references, color: this.getRandomTagColor() });
+      return ({
+        tag: tag.replace(/\.|@|\?|!|/g, ''), references,
+        color: randomColors ? this.getRandomTagColor() : undefined
+      });
     });
   }
 };
