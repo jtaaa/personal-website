@@ -3,10 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prestart": "node dist/getEnv",
     "start": "cd dist && NODE_ENV=production node ./bin/www",
-    "build": "tsc && npm run build --prefix ../client && rm -rf dist/build/ && mv ../client/build/ dist/build/",
-    "client": "cd ../client && npm start",
+    "build": "tsc && npm run build --prefix client && rm -rf dist/build/ && mv client/build/ dist/build/",
+    "client": "cd client && npm start",
     "server": "concurrently --kill-others-on-fail \"tsc -w --preserveWatchOutput\" \"cd dist && nodemon ./bin/www.js\"",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
