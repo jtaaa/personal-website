@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "postinstall": "npm install --prefix client",
     "start": "cd dist && NODE_ENV=production node ./bin/www",
     "build": "tsc && npm run build --prefix client && rm -rf dist/build/ && mv client/build/ dist/build/",
     "client": "cd client && npm start",
