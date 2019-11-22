@@ -9,10 +9,12 @@ class Toolbar extends Component {
     return (
       <div className="Toolbar">
         <MenuButton {...this.props}></MenuButton>
-        <Link to="/" className="Toolbar-title">Joshua Allum</Link>
+        <Link to="/" className="Toolbar-title">
+          Joshua Allum
+        </Link>
         <div></div>
       </div>
-    )
+    );
   }
 }
 
