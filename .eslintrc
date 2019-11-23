@@ -12,10 +12,10 @@
     "sourceType":  "module",
     "ecmaFeatures": {
       "jsx":  true
-    },
-    "project": "./tsconfig.json"
+    }
   },
   "rules": {
+    "react/jsx-indent": "off",
     "react/prop-types": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "import/prefer-default-export": "off",
@@ -33,7 +33,8 @@
     "import/resolver": {
       "node": {
         "extensions": [".js",".jsx",".ts",".tsx"]
-      }
+      },
+      "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
     }
   },
   "env": {
