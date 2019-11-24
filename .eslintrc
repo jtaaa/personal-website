@@ -5,7 +5,8 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier/react"
   ],
   "parserOptions": {
     "ecmaVersion":  2018,
@@ -15,12 +16,11 @@
     }
   },
   "rules": {
-    "react/jsx-indent": "off",
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", "tsx"] }],
     "react/prop-types": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "import/prefer-default-export": "off",
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.spec.tsx"] }],
-    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", "tsx"] }]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.spec.tsx"] }]
   },
   "settings": {
     "react": {
