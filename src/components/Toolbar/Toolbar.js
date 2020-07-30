@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './Toolbar.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./Toolbar.css";
 
-import MenuButton from '../MenuButton/MenuButton';
+import MenuButton from "../MenuButton/MenuButton";
 
 class Toolbar extends Component {
   render() {
     return (
       <div className="Toolbar">
-        <MenuButton {...this.props}></MenuButton>
-        <Link to="/" className="Toolbar-title">Joshua Allum</Link>
-        <div></div>
+        <MenuButton {...this.props} />
+        <Link to="/" className="Toolbar-title">
+          Joshua Allum
+        </Link>
+        <div />
       </div>
-    )
+    );
   }
 }
 
