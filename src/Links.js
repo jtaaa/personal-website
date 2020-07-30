@@ -11,16 +11,16 @@ const linkGroups = [
         alt: "GitHub profile",
         tooltip: <span>View GitHub Profile</span>,
         title: "GitHub",
-        delay: 600
+        delay: 700,
       },
       {
         name: "resume",
-        href: "https://raw.githack.com/jtaaa/Resume/master/Resume-blue.pdf",
+        href: "/assets/resume.pdf",
         src: "/assets/resume_small_color_short.png",
         alt: "Résumé",
         tooltip: <span>View Résumé</span>,
         title: "Résumé",
-        delay: 550
+        delay: 650,
       },
       {
         name: "email",
@@ -29,9 +29,9 @@ const linkGroups = [
         alt: "Email address",
         tooltip: <span>Contact Me</span>,
         title: "Email me",
-        delay: 500
-      }
-    ]
+        delay: 600,
+      },
+    ],
   },
   {
     groupName: "affiliations",
@@ -43,7 +43,7 @@ const linkGroups = [
         src: "/assets/teleios_small_color_whitebg.png",
         alt: "Teleios Systems Limited",
         tooltip: <span>Teleios Systems Limited</span>,
-        delay: 450
+        delay: 550,
       },
       {
         name: "massy",
@@ -51,7 +51,23 @@ const linkGroups = [
         src: "/assets/massy_small_color.png",
         alt: "Massy Group",
         tooltip: <span>Massy Technologies InfoCom</span>,
-        delay: 400
+        delay: 500,
+      },
+      {
+        name: "ibm",
+        href: "https://www.ibm.com/ca-en",
+        src: "/assets/ibm_small_color.png",
+        alt: "IBM",
+        tooltip: <span>IBM Canada</span>,
+        delay: 450,
+      },
+      {
+        name: "cognite",
+        href: "https://www.cognite.com/en/",
+        src: "/assets/cognite_small_bw.png",
+        alt: "Cognite",
+        tooltip: <span>Cognite AS</span>,
+        delay: 400,
       },
       {
         name: "acs",
@@ -65,7 +81,7 @@ const linkGroups = [
             Association of Caribbean Students
           </span>
         ),
-        delay: 350
+        delay: 350,
       },
       {
         name: "blueprint",
@@ -74,10 +90,10 @@ const linkGroups = [
         alt: "UW Blueprint",
         tooltip: <span>Blueprint</span>,
         round: true,
-        delay: 300
-      }
-    ]
-  }
+        delay: 300,
+      },
+    ],
+  },
 ];
 
 export default linkGroups;
