@@ -1,22 +1,31 @@
 {
   "files": {
     "main.css": "/static/css/main.6520b025.chunk.css",
-    "main.js": "/static/js/main.c5cf41fb.chunk.js",
-    "main.js.map": "/static/js/main.c5cf41fb.chunk.js.map",
+    "main.js": "/static/js/main.dfa74765.chunk.js",
+    "main.js.map": "/static/js/main.dfa74765.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.e083e45a.js",
     "runtime-main.js.map": "/static/js/runtime-main.e083e45a.js.map",
-    "static/js/2.cd731ce5.chunk.js": "/static/js/2.cd731ce5.chunk.js",
-    "static/js/2.cd731ce5.chunk.js.map": "/static/js/2.cd731ce5.chunk.js.map",
+    "static/js/2.7d8e8771.chunk.js": "/static/js/2.7d8e8771.chunk.js",
+    "static/js/2.7d8e8771.chunk.js.map": "/static/js/2.7d8e8771.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.567d406c090ace0bd9cec1347a74a126.js": "/precache-manifest.567d406c090ace0bd9cec1347a74a126.js",
+    "precache-manifest.3882b5087836af4e9aaa1e7dfdf8d312.js": "/precache-manifest.3882b5087836af4e9aaa1e7dfdf8d312.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.6520b025.chunk.css.map": "/static/css/main.6520b025.chunk.css.map",
-    "static/js/2.cd731ce5.chunk.js.LICENSE.txt": "/static/js/2.cd731ce5.chunk.js.LICENSE.txt"
+    "static/js/2.7d8e8771.chunk.js.LICENSE.txt": "/static/js/2.7d8e8771.chunk.js.LICENSE.txt",
+    "static/media/acs_small_bw.webp": "/static/media/acs_small_bw.03a0c28c.webp",
+    "static/media/bp_small_color.webp": "/static/media/bp_small_color.8c24b30e.webp",
+    "static/media/cognite_small_bw.webp": "/static/media/cognite_small_bw.78e6fd3b.webp",
+    "static/media/ibm_small_color.webp": "/static/media/ibm_small_color.2c4e989b.webp",
+    "static/media/massy_small_color.webp": "/static/media/massy_small_color.8cdbe1e0.webp",
+    "static/media/octocat_small_color.webp": "/static/media/octocat_small_color.a7094b9d.webp",
+    "static/media/paperplane_small_color.webp": "/static/media/paperplane_small_color.20c328d7.webp",
+    "static/media/resume_small.webp": "/static/media/resume_small.cf1db238.webp",
+    "static/media/teleios_small_color_whitebg.webp": "/static/media/teleios_small_color_whitebg.0821f121.webp"
   },
   "entrypoints": [
     "static/js/runtime-main.e083e45a.js",
-    "static/js/2.cd731ce5.chunk.js",
+    "static/js/2.7d8e8771.chunk.js",
     "static/css/main.6520b025.chunk.css",
-    "static/js/main.c5cf41fb.chunk.js"
+    "static/js/main.dfa74765.chunk.js"
   ]
 }
