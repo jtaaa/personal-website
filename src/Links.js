@@ -8,7 +8,8 @@ const linkGroups = [
       {
         name: "github",
         href: "https://github.com/jtaaa/",
-        src: "/assets/octocat_small_color.png",
+        src: "/assets/octocat_small_color.webp",
+        fallbackSrc: "/assets/octocat_small_color.png",
         alt: "GitHub profile",
         tooltip: <span>View GitHub Profile</span>,
         title: "GitHub",
@@ -17,7 +18,8 @@ const linkGroups = [
       {
         name: "resume",
         href: isProductionEnv ? "/web-resume" : resumeUrl,
-        src: "/assets/resume_small_color_short.png",
+        src: "/assets/resume_small.wwebp",
+        fallbackSrc: "/assets/resume_small_color_short.png",
         alt: "Résumé",
         tooltip: <span>View Résumé</span>,
         title: "Résumé",
@@ -26,7 +28,8 @@ const linkGroups = [
       {
         name: "email",
         href: "mailto:joshuatallum@gmail.com",
-        src: "/assets/paperplane_small_color.png",
+        src: "/assets/paperplane_small_color.webp",
+        fallbackSrc: "/assets/paperplane_small_color.png",
         alt: "Email address",
         tooltip: <span>Contact Me</span>,
         title: "Email me",
@@ -41,7 +44,8 @@ const linkGroups = [
       {
         name: "teleios",
         href: "https://www.teleios-systems.com/",
-        src: "/assets/teleios_small_color_whitebg.png",
+        src: "/assets/teleios_small_color_whitebg.webp",
+        fallbackSrc: "/assets/teleios_small_color_whitebg.png",
         alt: "Teleios Systems Limited",
         tooltip: <span>Teleios Systems Limited</span>,
         delay: 550,
@@ -49,7 +53,8 @@ const linkGroups = [
       {
         name: "massy",
         href: "http://www.massygroup.com/home.aspx",
-        src: "/assets/massy_small_color.png",
+        src: "/assets/massy_small_color.webp",
+        fallbackSrc: "/assets/massy_small_color.png",
         alt: "Massy Group",
         tooltip: <span>Massy Technologies InfoCom</span>,
         delay: 500,
@@ -57,7 +62,8 @@ const linkGroups = [
       {
         name: "ibm",
         href: "https://www.ibm.com/ca-en",
-        src: "/assets/ibm_small_color.png",
+        src: "/assets/ibm_small_color.webp",
+        fallbackSrc: "/assets/ibm_small_color.png",
         alt: "IBM",
         tooltip: <span>IBM Canada</span>,
         delay: 450,
@@ -65,7 +71,8 @@ const linkGroups = [
       {
         name: "cognite",
         href: "https://www.cognite.com/en/",
-        src: "/assets/cognite_small_bw.png",
+        src: "/assets/cognite_small_bw.webp",
+        fallbackSrc: "/assets/cognite_small_bw.png",
         alt: "Cognite",
         tooltip: <span>Cognite AS</span>,
         delay: 400,
@@ -73,7 +80,8 @@ const linkGroups = [
       {
         name: "acs",
         href: "http://uwacs.club",
-        src: "/assets/acs_small_bw.png",
+        src: "/assets/acs_small_bw.webp",
+        fallbackSrc: "/assets/acs_small_bw.png",
         alt: "University of Waterloo Association of Caribbean Students",
         tooltip: (
           <span>
@@ -87,7 +95,8 @@ const linkGroups = [
       {
         name: "blueprint",
         href: "http://uwblueprint.org",
-        src: "/assets/bp_small_color.png",
+        src: "/assets/bp_small_color.webp",
+        fallbackSrc: "/assets/bp_small_color.png",
         alt: "UW Blueprint",
         tooltip: <span>Blueprint</span>,
         round: true,

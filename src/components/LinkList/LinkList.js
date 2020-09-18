@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactTooltip from "react-tooltip";
+import LinkImage from "./LinkImage";
 import "./LinkList.css";
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -33,7 +34,7 @@ class LinkList extends Component {
       const group = (
         <div key={groupName} className="LinkList-group">
           {links.map(
-            ({ name, href, src, alt, tooltip, title, round = false }) => (
+            ({ name, href, src, fallbackSrc, alt, tooltip, title, round = false }) => (
               <div key={name} className="LinkList-link-container">
                 <a
                   className="LinkList-link"
@@ -41,7 +42,7 @@ class LinkList extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img
+                  <LinkImage
                     data-tip
                     data-for={name}
                     className={`
@@ -52,6 +53,8 @@ class LinkList extends Component {
                     style={{ width: size === "small" ? "24px" : "32px" }}
                     src={src}
                     alt={alt}
+                    fallbackSrc={fallbackSrc}
+                    fallbackType="image/png"
                   />
                 </a>
                 <ReactTooltip

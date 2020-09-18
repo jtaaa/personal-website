@@ -46,6 +46,8 @@
 
 .LinkList-link-img {
     width: 32px;
+    max-height: 32px;
+    object-fit: contain;
     transition: filter ease-in-out 200ms;
 }
 .LinkList-link-img:hover {
