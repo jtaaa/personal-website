@@ -1,9 +1,9 @@
 import React from "react";
 
-const LinkImage = ({ fallbackSrc, fallbackType, ...imgProps }) => {
+const LinkImage = ({ fallbackSrc, fallbackType, alt, ...imgProps }) => {
   return (
     <picture>
-      <img {...imgProps} />
+      <img alt={alt} {...imgProps} />
       {fallbackSrc && <source srcSet={fallbackSrc} type={fallbackType} />}
     </picture>
   );
