@@ -18,7 +18,7 @@ const linkGroups = [
       {
         name: "resume",
         href: isProductionEnv ? "/web-resume" : resumeUrl,
-        src: "/assets/resume_small.wwebp",
+        src: "/assets/resume_small.webp",
         fallbackSrc: "/assets/resume_small_color_short.png",
         alt: "Résumé",
         tooltip: <span>View Résumé</span>,
