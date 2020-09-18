@@ -6,10 +6,11 @@ jobs:
     - stage: test
       name: "Unit Tests"
     - stage: deploy
-      name: "Deploy to Production"
-      deploy:
-        provider: script
-        script: npm run deploy
+    name: "Deploy to Production"
+    deploy:
+        provider: pages
         skip_cleanup: true
+        github_token: $GITHUB_TOKEN # Set in the settings page of your repository, as a secure variable
+        keep_history: true
         on:
           branch: master
