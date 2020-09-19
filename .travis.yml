@@ -6,8 +6,8 @@ jobs:
     - stage: test
       name: "Unit Tests"
     - stage: deploy
-    name: "Deploy to Production"
-    deploy:
+      name: "Deploy to Production"
+      deploy:
         provider: pages
         skip_cleanup: true
         github_token: $GITHUB_TOKEN # Set in the settings page of your repository, as a secure variable
