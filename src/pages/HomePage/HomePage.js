@@ -12,7 +12,7 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ fadedout: false }), 800);
+    setTimeout(() => this.setState({ fadedout: false }), 750);
   }
 
   render() {

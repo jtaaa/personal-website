@@ -25,7 +25,6 @@ class LinkList extends Component {
     this.props.linkGroups.forEach((linkGroup) => {
       linkGroup.links.forEach((link, linkIndex) => {
         const delay = groupTotalDelay - linkIndex * DELAY_STEP;
-        console.log(delay);
         setTimeout(
           () =>
             this.setState((state) => ({
