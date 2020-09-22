@@ -80,6 +80,15 @@ const linkGroups = [
         delay: 400,
       },
       {
+        name: "sellyourstuff",
+        href: "https://github.com/SYSTT/sys-monorepo",
+        src: "/assets/sellyourstuff-logo.webp",
+        fallbackSrc: "/assets/sellyourstuff-logo.jpg",
+        alt: "Sell Your Stuff",
+        tooltip: <span>Sell Your Stuff Ltd</span>,
+        delay: 400,
+      },
+      {
         name: "acs",
         href: "http://uwacs.club",
         src: "/assets/acs_small_bw.webp",
