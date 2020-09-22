@@ -13,12 +13,12 @@ class LinkList extends Component {
   }
 
   componentDidMount() {
-    this.props.linkGroups.forEach(linkGroup => {
-      linkGroup.links.forEach(link => {
+    this.props.linkGroups.forEach((linkGroup) => {
+      linkGroup.links.forEach((link) => {
         setTimeout(
           () =>
-            this.setState(state => ({
-              greyed: { [link.name]: true, ...state.greyed }
+            this.setState((state) => ({
+              greyed: { [link.name]: true, ...state.greyed },
             })),
           link.delay ? link.delay : "500"
         );
@@ -30,46 +30,58 @@ class LinkList extends Component {
     const { linkGroups } = this.props;
     const children = [];
     for (let i = 0; i < linkGroups.length; i++) {
-      const { groupName, links, size } = linkGroups[i];
+      const { groupName, title, links, size } = linkGroups[i];
       const group = (
         <div key={groupName} className="LinkList-group">
-          {links.map(
-            ({ name, href, src, fallbackSrc, alt, tooltip, title, round = false }) => (
-              <div key={name} className="LinkList-link-container">
-                <a
-                  className="LinkList-link"
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <LinkImage
-                    data-tip
-                    data-for={name}
-                    className={`
+          <div className="LinkList-group-title">{title}</div>
+          <div className="LinkList-group-links">
+            {links.map(
+              ({
+                name,
+                href,
+                src,
+                fallbackSrc,
+                alt,
+                tooltip,
+                title,
+                round = false,
+              }) => (
+                <div key={name} className="LinkList-link-container">
+                  <a
+                    className="LinkList-link"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LinkImage
+                      data-tip
+                      data-for={name}
+                      className={`
                   LinkList-link-img
                   ${round ? "LinkList-round-img" : ""}
                   ${!this.state.greyed[name] ? "LinkList-color-img" : ""}
                 `}
-                    style={{ width: size === "small" ? "24px" : "32px" }}
-                    src={src}
-                    alt={alt}
-                    fallbackSrc={fallbackSrc}
-                    fallbackType="image/png"
-                  />
-                </a>
-                <ReactTooltip
-                  disable={isMobile}
-                  id={name}
-                  type="light"
-                  effect="solid"
-                  place="bottom"
-                >
-                  {tooltip}
-                </ReactTooltip>
-                {title && <div className="LinkList-link-title">{title}</div>}
-              </div>
-            )
-          )}
+                      style={{ width: size === "small" ? "24px" : "32px" }}
+                      src={src}
+                      alt={alt}
+                      fallbackSrc={fallbackSrc}
+                      fallbackType="image/png"
+                    />
+                  </a>
+                  <ReactTooltip
+                    disable={isMobile}
+                    id={name}
+                    type="light"
+                    effect="solid"
+                    place="bottom"
+                  >
+                    {tooltip}
+                  </ReactTooltip>
+                  {title && <div className="LinkList-link-title">{title}</div>}
+                </div>
+              )
+            )}
+          </div>
         </div>
       );
       children.push(group);

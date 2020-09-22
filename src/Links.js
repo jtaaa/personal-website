@@ -4,6 +4,7 @@ import { isProductionEnv, resumeUrl } from "./utils/constants";
 const linkGroups = [
   {
     groupName: "personal",
+    title: "More about me",
     links: [
       {
         name: "github",
@@ -39,6 +40,7 @@ const linkGroups = [
   },
   {
     groupName: "affiliations",
+    title: "Companies and Clubs",
     size: "small",
     links: [
       {
