@@ -4,6 +4,8 @@ import LinkImage from "./LinkImage";
 import "./LinkList.css";
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+const BASE_DELAY = 200;
+const DELAY_STEP = 50;
 
 class LinkList extends Component {
   constructor(props) {
@@ -13,16 +15,26 @@ class LinkList extends Component {
   }
 
   componentDidMount() {
+    const totalDelay =
+      BASE_DELAY +
+      this.props.linkGroups.reduce(
+        (delay, group) => delay + group.links.length * DELAY_STEP,
+        0
+      );
+    let groupTotalDelay = totalDelay;
     this.props.linkGroups.forEach((linkGroup) => {
-      linkGroup.links.forEach((link) => {
+      linkGroup.links.forEach((link, linkIndex) => {
+        const delay = groupTotalDelay - linkIndex * DELAY_STEP;
+        console.log(delay);
         setTimeout(
           () =>
             this.setState((state) => ({
               greyed: { [link.name]: true, ...state.greyed },
             })),
-          link.delay ? link.delay : "500"
+          delay
         );
       });
+      groupTotalDelay -= linkGroup.links.length * DELAY_STEP;
     });
   }
 
