@@ -8,6 +8,16 @@
 }
 @media only screen and (min-width: 1024px) {
     .LinkList {
+        flex-direction: column;
+        align-items: flex-end;
+        flex: none;
+        justify-content: flex-end;
+    }
+}
+@media only screen and (min-width: 1440px) {
+    .LinkList {
+        flex-direction: row;
+        align-items: center;
         flex: none;
         justify-content: flex-end;
     }
@@ -23,6 +33,7 @@
 
 .LinkList-group-links {
     display: flex;
+    flex-wrap: wrap;
     margin: 0.5em 0;
 }
 
@@ -38,11 +49,11 @@
     }
 }
 
-.LinkList-divider {
-    margin: 0 1em;
-}
-@media only screen and (min-width: 1024px) {
+@media
+    only screen and (min-width: 768px) and (max-width: 1023px),
+    only screen and (min-width: 1440px) {
     .LinkList-divider {
+        margin: 0 1em;
         height: 28px;
         border-right: 1px solid rgb(236, 236, 236);
     }
